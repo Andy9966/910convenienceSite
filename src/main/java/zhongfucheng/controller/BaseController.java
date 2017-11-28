@@ -31,6 +31,7 @@ public class BaseController {
 
     protected String indexName = ReadPropertiesUtil.readProp("indexName");
     protected String type = ReadPropertiesUtil.readProp("type");
+    protected String type2 = ReadPropertiesUtil.readProp("type");
 
 
     /**

@@ -1,0 +1,38 @@
+/*网页内容样式*/
+
+.content {
+    padding-top: 80px;
+    color: #c7c7c7;
+    line-height: 32px;
+    font-size: 18px;
+}
+
+.content h1 {
+    font-size: 34px;
+}
+
+
+/*评论样式*/
+
+    #comment {
+        background: black;
+    }
+
+#comment p {
+    color: #c7c7c7;
+}
+
+#lookComment   {
+    background: black;
+}
+
+#lookComment p {
+    color: #c7c7c7;
+}
+
+p{
+    background: black;
+}
+h1{
+    background: black;
+}

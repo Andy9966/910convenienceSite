@@ -2,6 +2,7 @@ package zhongfucheng.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import zhongfucheng.dao.BaseMapper;
+import zhongfucheng.dao.CommentMapper;
 import zhongfucheng.dao.UserMapper;
 import zhongfucheng.service.BaseService;
 
@@ -24,6 +25,9 @@ public class BaseServiceImpl<T> implements BaseService<T> {
 
     @Autowired
     protected UserMapper userMapper;
+
+    @Autowired
+    protected CommentMapper commentMapper;
 
 
     /**

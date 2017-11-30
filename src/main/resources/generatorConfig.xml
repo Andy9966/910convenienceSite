@@ -26,11 +26,11 @@
         <!-- 所生成的sqlMap的影射文件的位置,默认资源包src -->
         <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources"/>
 
-        <!-- 配置dao接口生成信息--><!--
-        <javaClientGenerator type="XMLMAPPER" targetPackage="zhongfucheng.dao" targetProject="src/main/java"/>-->
+        <!-- 配置dao接口生成信息-->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="zhongfucheng.dao" targetProject="src/main/java"/>
 
 
-        <table tableName="table_user" enableCountByExample="false"
+        <table tableName="table_comment" enableCountByExample="false"
                enableUpdateByExample="false" enableDeleteByExample="false"
                enableSelectByExample="false" selectByExampleQueryId="false"
         >

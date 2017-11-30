@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import zhongfucheng.service.CommentService;
 import zhongfucheng.service.UserService;
 import zhongfucheng.service.impl.EmailService;
 import zhongfucheng.utils.FreeMarkerUtils;
@@ -28,6 +29,10 @@ public class BaseController {
 
     @Autowired
     protected EmailService emailService;
+
+
+    @Autowired
+    protected CommentService commentService;
 
     protected String indexName = ReadPropertiesUtil.readProp("indexName");
     protected String type = ReadPropertiesUtil.readProp("type");

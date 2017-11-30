@@ -4,53 +4,69 @@
     <meta charset="utf-8">
     <title>关于网站</title>
 
+
     <!--背景CSS-->
     <link rel="stylesheet" media="screen" href="${request.contextPath}/css/background.css">
 
-<#--bootstrap字体-->
-    <link rel="stylesheet" href="${request.contextPath}/bootstrap-3.3.7-dist/css/bootstrap.css"/>
-
-
-    <!--导航条CSS-->
-    <link rel="stylesheet" href="${request.contextPath}/css/navbar.css"/>
 
     <!--Jquery-->
     <script src="${request.contextPath}/js/jquery-3.2.1.min.js"></script>
 
+    <!-- bootStrap-->
+    <script src="${request.contextPath}/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="${request.contextPath}/bootstrap-3.3.7-dist/css/bootstrap.css"/>
+
+    <!--导航条CSS-->
+    <link rel="stylesheet" href="${request.contextPath}/css/navbar.css"/>
+
+
+    <!--弹出框-->
+    <script src="${request.contextPath}/js/sweetalert.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="${request.contextPath}/css/sweetalert.css">
+
+    <!--使用JS获取项目根路径-->
+    <script>
+        var path = "";
+        $(function () {
+            var strFullPath = window.document.location.href;
+            var strPath = window.document.location.pathname;
+            var pos = strFullPath.indexOf(strPath);
+            var prePath = strFullPath.substring(0, pos);
+            var postPath = strPath.substring(0, strPath.substr(1).indexOf('/') + 1);
+            path = prePath;
+        });
+    </script>
+
     <!--清除所有默认样式-->
     <link rel="stylesheet" href="${request.contextPath}/css/cleanDefault.css"/>
 
+    <!--获取用户的身份信息，如果用户已登陆，那么将用户身份信息显示出来-->
+    <script src="${request.contextPath}/js/getUser.js"></script>
 
-    <!--网页内容样式-->
-    <style>
-        .jumbotron {
-            padding-top: 115px;
-            padding-bottom: 30px;
-            margin-bottom: 30px;
-            color: #c7c7c7;
-            background-color: black;
-        }
 
-        .jumbotron h1 {
-            font-size: 35px;
-            color: inherit;
-            margin-bottom: inherit;
-        }
-    </style>
+    <!--该网页的样式-->
+    <link rel="stylesheet" href="${request.contextPath}/css/toAboutSite.css"/>
+
+
+
+    <!--该网页的JS-->
+    <script src="${request.contextPath}/js/toAboutSite.js"></script>
 
 
 </head>
 <body>
 
+<!--获取用户的Id-->
+<input type="hidden" id="userId" name="userId">
+
 
 <!-- 导航条被嵌套在背景中 -->
 <div id="particles-js">
     <!--导航条-->
-    <#include "/common/navbar.ftl">
+<#include "/common/navbar.ftl">
 
     <!--网页内容-->
-    <div class="jumbotron" style="position: absolute;width: 100%" id="weather">
-
+    <div class="content" style="position: absolute; width: 100%">
 
         <h1>为什么要开发该网站</h1>
         <p>学习JavaWeb也有一段时间了，学习了不少的知识，也跟着视频教程做了不少的“项目”，但从未自己真正写过属于自己的项目。</p>
@@ -76,12 +92,36 @@
         <p>&nbsp;&nbsp;&nbsp;4. Dao层采用Mybatis，Controller层采用SpringMVC，Spring对Mybatis和SpringMVC进行整合和事务管理</p>
         <p>&nbsp;&nbsp;&nbsp;5. Shiro权限管理框架控制登陆以及对个人收藏夹、在线聊天功能进行认证的管理</p>
         <p>&nbsp;&nbsp;&nbsp;6. 使用FreeMarker来渲染页面和配置发送邮箱的模版</p>
-    </div>
 
+
+        <h1>具体的思路以及代码：</h1>
+        <p>博客记录了该网站的创建过程：https://zhongfucheng.bitcron.com/tag/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%8F%91%E9%A1%B9%E7%9B%AE</p>
+        <p>该网站的GitHub地址：https://github.com/ZhongFuCheng3y/910convenienceSite</p>
+
+
+
+        <!--查看评论区-->
+        <div id="lookComment">
+            <p><h1>查看评论：</h1></p>
+        </div>
+
+        <!--发布评论区-->
+        <div id="comment">
+            <p><h1>评论：</h1></p>
+            <textarea class="form-control" rows="3" id="comment_text"></textarea>
+            <p class="text-right">
+                <button type="button" class="btn btn-primary" id="submitComment">提交评论</button>
+            </p>
+        </div>
+    </div>
 </div>
+
+
+
 
 <!--导航条JS-->
 <script src="${request.contextPath}/js/narbar.js"></script>
+
 
 <!-- 背景JS -->
 <script src="${request.contextPath}/js/background/particles.js"></script>

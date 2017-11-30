@@ -17,6 +17,11 @@
     <!--Jquery-->
     <script src="${path}/js/jquery-3.2.1.min.js"></script>
 
+
+    <#--弹出框-->
+    <script src="${path}/js/sweetalert.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="${path}/css/sweetalert.css">
+
     <!--使用JS获取项目根路径-->
     <script>
         var path = "";
@@ -66,13 +71,13 @@
                             }
                         },
                         error: function () {
-                            alert("获取天气失败...")
+                            sweetAlert("获取天气失败...")
                         }
                     });
 
                 },
                 error: function () {
-                    alert("定位失败...")
+                    sweetAlert("定位失败...")
                 }
             });
         });

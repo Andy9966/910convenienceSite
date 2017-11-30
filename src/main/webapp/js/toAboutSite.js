@@ -1,4 +1,4 @@
-//添加评论
+//添加评论,
 $(function () {
     $("#submitComment").click(function () {
 

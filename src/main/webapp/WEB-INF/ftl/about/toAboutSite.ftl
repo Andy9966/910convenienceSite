@@ -5,10 +5,6 @@
     <title>关于网站</title>
 
 
-    <!--背景CSS-->
-    <link rel="stylesheet" media="screen" href="${request.contextPath}/css/background.css">
-
-
     <!--Jquery-->
     <script src="${request.contextPath}/js/jquery-3.2.1.min.js"></script>
 
@@ -60,15 +56,14 @@
 <input type="hidden" id="userId" name="userId">
 
 
-<!-- 导航条被嵌套在背景中 -->
-<div id="particles-js">
     <!--导航条-->
 <#include "/common/navbar.ftl">
 
-    <!--网页内容-->
-    <div class="content" style="position: absolute; width: 100%">
 
-        <h1>为什么要开发该网站</h1>
+    <!--网页内容-->
+    <div class="content" >
+
+        <h1>为什么要开发该网站：</h1>
         <p>学习JavaWeb也有一段时间了，学习了不少的知识，也跟着视频教程做了不少的“项目”，但从未自己真正写过属于自己的项目。</p>
         <p>写该项目就是为了把自己学过的东西来整合一遍，把学过的技术都整合进来，并且为了方便自己使用吧。</p>
 
@@ -98,6 +93,7 @@
         <p>博客记录了该网站的创建过程：https://zhongfucheng.bitcron.com/tag/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%8F%91%E9%A1%B9%E7%9B%AE</p>
         <p>该网站的GitHub地址：https://github.com/ZhongFuCheng3y/910convenienceSite</p>
 
+        <img src="${request.contextPath}/imgs/5.jpg" width="100%" height="200px"  style ="display:block;">
 
 
         <!--查看评论区-->
@@ -114,18 +110,14 @@
             </p>
         </div>
     </div>
+
 </div>
-
-
 
 
 <!--导航条JS-->
 <script src="${request.contextPath}/js/narbar.js"></script>
 
 
-<!-- 背景JS -->
-<script src="${request.contextPath}/js/background/particles.js"></script>
-<script src="${request.contextPath}/js/background/app.js"></script>
 
 </body>
 </html>

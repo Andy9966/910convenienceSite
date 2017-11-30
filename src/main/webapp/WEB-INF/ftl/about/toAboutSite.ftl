@@ -104,7 +104,7 @@
         <!--发布评论区-->
         <div id="comment">
             <p><h1>评论：</h1></p>
-            <textarea class="form-control" rows="3" id="comment_text"></textarea>
+            <textarea class="form-control" rows="3" id="comment_text" style="background: black"></textarea>
             <p class="text-right">
                 <button type="button" class="btn btn-primary" id="submitComment">提交评论</button>
             </p>

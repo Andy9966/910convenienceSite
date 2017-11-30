@@ -59,7 +59,7 @@ $(function () {
             //遍历数组，对返回的JSON作为评论添加到网页上
             for (var i = 0; i < responseText.length; i++) {
 
-                $("#lookComment").append("<div style='background: black; border: #ffffff 1px solid'><p style='color: #448AFF'>" + responseText[i].nickName + "  &nbsp;&nbsp;&nbsp;<span style='color: #333333'>" + new Date(responseText[i].createTime).toLocaleString() + "</span><p class='text-right' style='color: #448AFF'>" + responseText[i].order + "</p> </p><span style='color: #c7c7c7'>" + responseText[i].content + " </span></div>");
+                $("#lookComment").append("<div style='background: black; border: #ffffff 1px solid'><p style='color: #c7c7c7'>" + responseText[i].nickName + "  &nbsp;&nbsp;&nbsp;<span style='color: #333333'>" + new Date(responseText[i].createTime).toLocaleString() + "</span><p class='text-right' style='color: #c7c7c7'>" + responseText[i].order + "</p> </p><span style='color: #c7c7c7'>" + responseText[i].content + " </span></div>");
 
             }
         },

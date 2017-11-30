@@ -24,7 +24,7 @@
       <schema id="13" name="ssh03"/>
       <schema id="14" name="sys"/>
       <table id="15" parent="1" name="table_user"/>
-      <table id="16" parent="1" name="tabel_comment"/>
+      <table id="16" parent="1" name="table_comment"/>
       <column id="17" parent="15" name="user_id">
         <comment>用户Id</comment>
         <mandatory>1</mandatory>

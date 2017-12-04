@@ -6,88 +6,589 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
 
-    <title>首页</title>
+    <title>个人备忘录</title>
 
 
-    <!--materialize+jquery-->
-    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
-    <script type="text/javascript" src="js/materialize.min.js"></script>
-    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+    <!--Jquery-->
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
 
-    <!--使用JS获取项目根路径-->
-    <script>
-        var path = "";
-        $(function () {
-            var strFullPath = window.document.location.href;
-            var strPath = window.document.location.pathname;
-            var pos = strFullPath.indexOf(strPath);
-            var prePath = strFullPath.substring(0, pos);
-            var postPath = strPath.substring(0, strPath.substr(1).indexOf('/') + 1);
-            path = prePath + postPath;
-        });
-    </script>
+    <!-- Bootstrap core CSS -->
+    <link href="bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/dashboard.css" rel="stylesheet">
 
-    <!--获取用户的身份信息，如果用户已登陆，那么将用户身份信息显示出来-->
-    <script src="js/getUser.js"></script>
+    <!--清除所有默认样式-->
+    <link rel="stylesheet" href="css/cleanDefault.css"/>
 
-    <!--背景CSS-->
-    <link rel="stylesheet" media="screen" href="css/background.css">
+
+    <!--导航条css-->
+    <link rel="stylesheet" href="css/navbar.css"/>
+
+
+    <!--时间选择器-->
+    <link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+    <script type="text/javascript" src="js/bootstrap-datetimepicker.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap-datetimepicker.fr.js"></script>
+
 </head>
+
+<script>
+    $(function () {
+
+        //点击左侧链接、右侧显示页面
+        $("#leftNavBar li a ").click(function () {
+
+            //当前样式
+            $(this).parent().addClass("active").siblings().removeClass();
+
+            var attr = $(this).attr("name");
+            if (attr == "queryMemo") {
+                $("#queryMemo").show().siblings().hide();
+            } else if (attr == "addMemo") {
+                $("#addMemo").show().siblings().hide();
+            } else if (attr == "updMemo") {
+                $("#updMemo").show().siblings().hide();
+            } else if (attr == "delMemo") {
+                $("#delMemo").show().siblings().hide();
+
+            }
+        });
+    });
+</script>
 
 <body>
 
 
-<!--获取数据-->
-<input type="hidden" id="userNickname">
-<input type="hidden" id="userId">
+<!--导航条-->
+<nav>
+    <div>
+        <a href=" ${path}/index.html">
+            <div>
+                <h1>首页</h1>
+                <span></span>
+            </div>
+            <div>
+                <h1>首页</h1>
+                <span></span>
+            </div>
+        </a>
+    </div>
+    <div>
+        <a href=" ${path}/goURL/onlineBarrage/onlineBarrage.do">
+            <div>
+                <h1>在线聊天</h1>
+                <span></span>
+            </div>
+            <div>
+                <h1>在线聊天</h1>
+                <span></span>
+            </div>
+        </a>
+    </div>
+    <div>
+        <a href=" ${path}/goURL/favorites/toFavorites.do"">
+        <div>
+            <h1>个人收藏夹</h1>
+            <span></span>
+        </div>
+        <div>
+            <h1>个人收藏夹</h1>
+            <span></span>
+        </div>
+        </a>
+    </div>
+    <div>
+        <a href="${path}/goURL/memo/toMemo.do">
+            <div>
+                <h1>个人备忘录</h1>
+                <span></span>
+            </div>
+            <div>
+                <h1>个人备忘录</h1>
+                <span></span>
+            </div>
+        </a>
+    </div>
 
-<div id="particles-js">
-    <nav style="position: absolute;">
-        <div class="nav-wrapper">
-            <a href="#" class="brand-logo">910便利网</a>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a href="sass.html">在线聊天室</a></li>
-                <li><a href="sass.html">个人收藏夹</a></li>
-                <li><a href="http://localhost:8088/zhongfucheng/goURL/user/toLogin.do">登陆</a></li>
-                <li><a href="collapsible.html">注册</a></li>
+    <div>
+        <a href="${path}/goURL/user/toLogin.do" id="loginDiv">
+            <div>
+                <h1>登陆</h1>
+                <span></span>
+            </div>
+            <div>
+                <h1 id="loginDiv1">登陆</h1>
+                <span></span>
+            </div>
+        </a>
+    </div>
+    <div>
+        <a href="${path}/goURL/user/toRegister.do" id="registerDiv">
+            <div>
+                <h1>注册</h1>
+                <span></span>
+            </div>
+            <div>
+                <h1>注册</h1>
+                <span></span>
+            </div>
+        </a>
+    </div>
+    <div>
+        <a href="${path}/goURL/about/toAboutSite.do ">
+            <div>
+                <h1>关于网站</h1>
+                <span></span>
+            </div>
+            <div>
+                <h1>关于网站</h1>
+                <span></span>
+            </div>
+        </a>
+    </div>
+</nav>
+
+
+<!--页面内容-->
+<div class="container-fluid">
+
+    <div class="row">
+
+        <!--左侧导航条-->
+        <div class="col-sm-3 col-md-2 sidebar">
+            <ul class="nav nav-sidebar" id="leftNavBar">
+                <li class="active"><a href="#" name="queryMemo">查看所有的备忘录<span class="sr-only">(current)</span></a></li>
+                <li><a href="#" name="addMemo">添加备忘录</a></li>
+                <li><a href="#" name="delMemo">删除备忘录</a></li>
+                <li><a href="#" name="updMemo">修改备忘录</a></li>
             </ul>
         </div>
-    </nav>
 
 
+        <!--右侧的内容-->
+        <div>
+            <!--查看所有备忘录-->
+            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" id="queryMemo">
+                <h1 class="page-header">查看所有的备忘录</h1>
 
+                <!--4张图片-->
+                <div class="row placeholders">
+                    <div class="col-xs-6 col-sm-3 placeholder">
+                        <img src="imgs/20001.png" width="200" height="200" class="img-responsive"
+                             alt="Generic placeholder thumbnail">
+                    </div>
+                    <div class="col-xs-6 col-sm-3 placeholder">
+                        <img src="imgs/20002.png" width="200" height="200" class="img-responsive"
+                             alt="Generic placeholder thumbnail">
+                    </div>
+                    <div class="col-xs-6 col-sm-3 placeholder">
+                        <img src="imgs/20003.png">
+                    </div>
+                    <div class="col-xs-6 col-sm-3 placeholder">
+                        <img src="imgs/20004.png">
+                    </div>
+                </div>
+
+                <h2 class="sub-header">查看所有备忘录</h2>
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>用户</th>
+                            <th>编辑该备忘录的时间</th>
+                            <th>发送的邮箱地址</th>
+                            <th>发送的内容</th>
+                            <th>预定发送时间</th>
+                            <th>状态</th>
+                            <th>操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>钟福成</td>
+                            <td>2017-12-4 11:02:35</td>
+                            <td>403686131@qq.com</td>
+                            <td>我要在2点中</td>
+                            <td>2017-12-4 14:08:22</td>
+                            <td>已发送</td>
+                            <td><a href="">修改</a>&nbsp;&nbsp;<a href="">删除</a></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!--增加备忘录-->
+            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" id="addMemo" style="display: none">
+                <h1 class="page-header">增加备忘录</h1>
+
+                <!--4张图片-->
+                <div class="row placeholders">
+                    <div class="col-xs-6 col-sm-3 placeholder">
+                        <img src="imgs/20001.png" width="200" height="200" class="img-responsive"
+                             alt="Generic placeholder thumbnail">
+                    </div>
+                    <div class="col-xs-6 col-sm-3 placeholder">
+                        <img src="imgs/20002.png" width="200" height="200" class="img-responsive"
+                             alt="Generic placeholder thumbnail">
+                    </div>
+                    <div class="col-xs-6 col-sm-3 placeholder">
+                        <img src="imgs/20003.png">
+                    </div>
+                    <div class="col-xs-6 col-sm-3 placeholder">
+                        <img src="imgs/20004.png">
+                    </div>
+                </div>
+
+                <h2 class="sub-header">增加备忘录</h2>
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">邮箱地址：</label>
+                        <div class="col-sm-10">
+                            <input type="email"  class="form-control" id="inputEmail" readonly value="222">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="datetimepicker" class="col-sm-2 control-label">选择发送邮件的时间：</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="datetimepicker" readonly >
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputContent" class="col-sm-2 control-label">备忘录内容：</label>
+                        <div class="col-sm-10">
+                            <textarea name="" id="" cols="30" rows="10" id="inputContent" ></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-default">增加备忘录</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!--删除备忘录-->
+            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" id="delMemo" style="display: none">
+                <h1 class="page-header">删除备忘录</h1>
+
+                <!--4张图片-->
+                <div class="row placeholders">
+                    <div class="col-xs-6 col-sm-3 placeholder">
+                        <img src="imgs/20001.png" width="200" height="200" class="img-responsive"
+                             alt="Generic placeholder thumbnail">
+                    </div>
+                    <div class="col-xs-6 col-sm-3 placeholder">
+                        <img src="imgs/20002.png" width="200" height="200" class="img-responsive"
+                             alt="Generic placeholder thumbnail">
+                    </div>
+                    <div class="col-xs-6 col-sm-3 placeholder">
+                        <img src="imgs/20003.png">
+                    </div>
+                    <div class="col-xs-6 col-sm-3 placeholder">
+                        <img src="imgs/20004.png">
+                    </div>
+                </div>
+
+                <h2 class="sub-header">删除备忘录</h2>
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Header</th>
+                            <th>Header</th>
+                            <th>Header</th>
+                            <th>Header</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>1,001</td>
+                            <td>Lorem</td>
+                            <td>ipsum</td>
+                            <td>dolor</td>
+                            <td>sit</td>
+                        </tr>
+                        <tr>
+                            <td>1,002</td>
+                            <td>amet</td>
+                            <td>consectetur</td>
+                            <td>adipiscing</td>
+                            <td>elit</td>
+                        </tr>
+                        <tr>
+                            <td>1,003</td>
+                            <td>Integer</td>
+                            <td>nec</td>
+                            <td>odio</td>
+                            <td>Praesent</td>
+                        </tr>
+                        <tr>
+                            <td>1,003</td>
+                            <td>libero</td>
+                            <td>Sed</td>
+                            <td>cursus</td>
+                            <td>ante</td>
+                        </tr>
+                        <tr>
+                            <td>1,004</td>
+                            <td>dapibus</td>
+                            <td>diam</td>
+                            <td>Sed</td>
+                            <td>nisi</td>
+                        </tr>
+                        <tr>
+                            <td>1,005</td>
+                            <td>Nulla</td>
+                            <td>quis</td>
+                            <td>sem</td>
+                            <td>at</td>
+                        </tr>
+                        <tr>
+                            <td>1,006</td>
+                            <td>nibh</td>
+                            <td>elementum</td>
+                            <td>imperdiet</td>
+                            <td>Duis</td>
+                        </tr>
+                        <tr>
+                            <td>1,007</td>
+                            <td>sagittis</td>
+                            <td>ipsum</td>
+                            <td>Praesent</td>
+                            <td>mauris</td>
+                        </tr>
+                        <tr>
+                            <td>1,008</td>
+                            <td>Fusce</td>
+                            <td>nec</td>
+                            <td>tellus</td>
+                            <td>sed</td>
+                        </tr>
+                        <tr>
+                            <td>1,009</td>
+                            <td>augue</td>
+                            <td>semper</td>
+                            <td>porta</td>
+                            <td>Mauris</td>
+                        </tr>
+                        <tr>
+                            <td>1,010</td>
+                            <td>massa</td>
+                            <td>Vestibulum</td>
+                            <td>lacinia</td>
+                            <td>arcu</td>
+                        </tr>
+                        <tr>
+                            <td>1,011</td>
+                            <td>eget</td>
+                            <td>nulla</td>
+                            <td>Class</td>
+                            <td>aptent</td>
+                        </tr>
+                        <tr>
+                            <td>1,012</td>
+                            <td>taciti</td>
+                            <td>sociosqu</td>
+                            <td>ad</td>
+                            <td>litora</td>
+                        </tr>
+                        <tr>
+                            <td>1,013</td>
+                            <td>torquent</td>
+                            <td>per</td>
+                            <td>conubia</td>
+                            <td>nostra</td>
+                        </tr>
+                        <tr>
+                            <td>1,014</td>
+                            <td>per</td>
+                            <td>inceptos</td>
+                            <td>himenaeos</td>
+                            <td>Curabitur</td>
+                        </tr>
+                        <tr>
+                            <td>1,015</td>
+                            <td>sodales</td>
+                            <td>ligula</td>
+                            <td>in</td>
+                            <td>libero</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!--修改备忘录-->
+            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" id="updMemo" style="display: none">
+                <h1 class="page-header">修改备忘录</h1>
+
+                <!--4张图片-->
+                <div class="row placeholders">
+                    <div class="col-xs-6 col-sm-3 placeholder">
+                        <img src="imgs/20001.png" width="200" height="200" class="img-responsive"
+                             alt="Generic placeholder thumbnail">
+                    </div>
+                    <div class="col-xs-6 col-sm-3 placeholder">
+                        <img src="imgs/20002.png" width="200" height="200" class="img-responsive"
+                             alt="Generic placeholder thumbnail">
+                    </div>
+                    <div class="col-xs-6 col-sm-3 placeholder">
+                        <img src="imgs/20003.png">
+                    </div>
+                    <div class="col-xs-6 col-sm-3 placeholder">
+                        <img src="imgs/20004.png">
+                    </div>
+                </div>
+
+                <h2 class="sub-header">修改备忘录</h2>
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Header</th>
+                            <th>Header</th>
+                            <th>Header</th>
+                            <th>Header</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>1,001</td>
+                            <td>Lorem</td>
+                            <td>ipsum</td>
+                            <td>dolor</td>
+                            <td>sit</td>
+                        </tr>
+                        <tr>
+                            <td>1,002</td>
+                            <td>amet</td>
+                            <td>consectetur</td>
+                            <td>adipiscing</td>
+                            <td>elit</td>
+                        </tr>
+                        <tr>
+                            <td>1,003</td>
+                            <td>Integer</td>
+                            <td>nec</td>
+                            <td>odio</td>
+                            <td>Praesent</td>
+                        </tr>
+                        <tr>
+                            <td>1,003</td>
+                            <td>libero</td>
+                            <td>Sed</td>
+                            <td>cursus</td>
+                            <td>ante</td>
+                        </tr>
+                        <tr>
+                            <td>1,004</td>
+                            <td>dapibus</td>
+                            <td>diam</td>
+                            <td>Sed</td>
+                            <td>nisi</td>
+                        </tr>
+                        <tr>
+                            <td>1,005</td>
+                            <td>Nulla</td>
+                            <td>quis</td>
+                            <td>sem</td>
+                            <td>at</td>
+                        </tr>
+                        <tr>
+                            <td>1,006</td>
+                            <td>nibh</td>
+                            <td>elementum</td>
+                            <td>imperdiet</td>
+                            <td>Duis</td>
+                        </tr>
+                        <tr>
+                            <td>1,007</td>
+                            <td>sagittis</td>
+                            <td>ipsum</td>
+                            <td>Praesent</td>
+                            <td>mauris</td>
+                        </tr>
+                        <tr>
+                            <td>1,008</td>
+                            <td>Fusce</td>
+                            <td>nec</td>
+                            <td>tellus</td>
+                            <td>sed</td>
+                        </tr>
+                        <tr>
+                            <td>1,009</td>
+                            <td>augue</td>
+                            <td>semper</td>
+                            <td>porta</td>
+                            <td>Mauris</td>
+                        </tr>
+                        <tr>
+                            <td>1,010</td>
+                            <td>massa</td>
+                            <td>Vestibulum</td>
+                            <td>lacinia</td>
+                            <td>arcu</td>
+                        </tr>
+                        <tr>
+                            <td>1,011</td>
+                            <td>eget</td>
+                            <td>nulla</td>
+                            <td>Class</td>
+                            <td>aptent</td>
+                        </tr>
+                        <tr>
+                            <td>1,012</td>
+                            <td>taciti</td>
+                            <td>sociosqu</td>
+                            <td>ad</td>
+                            <td>litora</td>
+                        </tr>
+                        <tr>
+                            <td>1,013</td>
+                            <td>torquent</td>
+                            <td>per</td>
+                            <td>conubia</td>
+                            <td>nostra</td>
+                        </tr>
+                        <tr>
+                            <td>1,014</td>
+                            <td>per</td>
+                            <td>inceptos</td>
+                            <td>himenaeos</td>
+                            <td>Curabitur</td>
+                        </tr>
+                        <tr>
+                            <td>1,015</td>
+                            <td>sodales</td>
+                            <td>ligula</td>
+                            <td>in</td>
+                            <td>libero</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-<footer class="page-footer #000000 black">
-    <div class="container ">
-        <div class="row">
-            <div class="col l6 s12">
-                <h5 class="white-text">This is my First Site</h5>
-                <p class="grey-text text-lighten-4">......</p>
-            </div>
-            <div class="col l4 offset-l2 s12">
-                <ul>
-                    <li><a class="grey-text text-lighten-3" href="#!">Blog</a></li>
-                    <li><a class="grey-text text-lighten-3" href="#!">GitHub</a></li>
 
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div class="footer-copyright">
-        <div class="container">
-            © 2014 Copyright zhongfucheng
-            <a class="grey-text text-lighten-4 right" href="#!">More....</a>
-        </div>
-    </div>
-</footer>
+
+<!--导航条JS-->
+<script src="js/narbar.js"></script>
+
+<!--时间选择器-->
+<script>
+    $("#datetimepicker").datetimepicker({
+        format:'yyyy-mm-dd hh:ii:ss',
+        autoclose:true,//自动关闭
+        minView:0,//最精准的时间选择为日期0-分 1-时 2-日 3-月
+        weekStart:0
+
+    });
+</script>
+
 
 </body>
-
-<!-- 背景JS -->
-<script src="js/background/particles.js"></script>
-<script src="js/background/app.js"></script>
-
 </html>

@@ -13,9 +13,10 @@ $(function () {
                 $("#registerDiv").attr("href", path + "/logout.action");
                 $("#registerDiv div h1").html("注销");
 
+                //页面获取用户的数据
                 $("#userNickname").val(responseText.user.userNickname);
-
                 $("#userId").val(responseText.user.userId);
+                $("#userEmail").val(responseText.user.userEmail);
             }
         },
         error: function () {

@@ -4,6 +4,8 @@
     <meta charset="utf-8">
     <title>关于网站</title>
 
+    <link href="${request.contextPath}/imgs/favicon.ico" type="image/x-icon" rel="shortcut icon"/>
+
 
     <!--Jquery-->
     <script src="${request.contextPath}/js/jquery-3.2.1.min.js"></script>
@@ -93,7 +95,7 @@
         <p>博客记录了该网站的创建过程：https://zhongfucheng.bitcron.com/tag/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%8F%91%E9%A1%B9%E7%9B%AE</p>
         <p>该网站的GitHub地址：https://github.com/ZhongFuCheng3y/910convenienceSite</p>
 
-        <img src="${request.contextPath}/imgs/5.jpg" width="100%" height="200px"  style ="display:block;">
+        <img src="${request.contextPath}/imgs/pinglunBackground.jpg" width="100%" height="200px" style ="display:block;">
 
 
         <!--查看评论区-->

@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <title>在线弹幕</title>
 
+    <link href="${request.contextPath}/imgs/favicon.ico" type="image/x-icon" rel="shortcut icon"/>
+
     <!--背景CSS-->
     <link rel="stylesheet" media="screen" href="${request.contextPath}/css/background.css">
 

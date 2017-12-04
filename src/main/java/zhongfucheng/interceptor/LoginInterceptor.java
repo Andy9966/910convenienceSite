@@ -40,7 +40,7 @@ public class LoginInterceptor implements HandlerInterceptor {
             Session session = currentUser.getSession();
             if (session.getAttribute("currentUser") == null) {
 
-                User user = userService.validateUserExist(activeUser.getUsercEmail());
+                User user = userService.validateUserExist(activeUser.getUserEmail());
 
                 UsernamePasswordToken token = new UsernamePasswordToken(user.getUserEmail(), activeUser.getPassword(), currentUser.isRemembered());
 

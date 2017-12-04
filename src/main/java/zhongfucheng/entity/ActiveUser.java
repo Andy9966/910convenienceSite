@@ -11,7 +11,7 @@ import java.io.Serializable;
  */
 public class ActiveUser implements Serializable {
     private String userId;
-    private String usercEmail;
+    private String userEmail;
     private String userNickname;
 
     private String password;
@@ -32,12 +32,12 @@ public class ActiveUser implements Serializable {
         this.userId = userId;
     }
 
-    public String getUsercEmail() {
-        return usercEmail;
+    public String getUserEmail() {
+        return userEmail;
     }
 
-    public void setUsercEmail(String usercEmail) {
-        this.usercEmail = usercEmail;
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
     }
 
     public String getUserNickname() {

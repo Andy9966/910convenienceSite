@@ -56,7 +56,7 @@ public class UserRealm extends AuthorizingRealm {
         //将数据存到用户的身份信息实体中
         ActiveUser activeUser = new ActiveUser();
         activeUser.setUserId(user.getUserId());
-        activeUser.setUsercEmail(user.getUserEmail());
+        activeUser.setUserEmail(user.getUserEmail());
         activeUser.setUserNickname(user.getUserNickname());
         activeUser.setPassword(password);
 

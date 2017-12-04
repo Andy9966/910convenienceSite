@@ -30,7 +30,7 @@
         <javaClientGenerator type="XMLMAPPER" targetPackage="zhongfucheng.dao" targetProject="src/main/java"/>
 
 
-        <table tableName="table_comment" enableCountByExample="false"
+        <table tableName="table_memo" enableCountByExample="false"
                enableUpdateByExample="false" enableDeleteByExample="false"
                enableSelectByExample="false" selectByExampleQueryId="false"
         >

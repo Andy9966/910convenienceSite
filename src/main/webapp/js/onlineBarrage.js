@@ -30,8 +30,8 @@ goEasy.subscribe({
     onMessage: function (message) {
         var txt = message.content;
         var item = {
-            img: '${request.contextPath}/imgs/favicon.ico', //图片
-            info: $("#userNickname").val() +"："+ txt, //文字
+            img: path + '/imgs/favicon.ico', //图片
+            info: $("#userNickname").val() + "：" + txt, //文字
             /*href: 'www.baidu.com',*/ //链接
             close: true, //显示关闭按钮
             speed: 8, //延迟,单位秒,默认8

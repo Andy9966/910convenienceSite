@@ -2,66 +2,21 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>获取天气API</title>
+    <title>Title</title>
 </head>
 <body>
-
-<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
-
-<!--bootstrap与validation样式和JS-->
-
-<link href="bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
-
-<script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
-
-
-<script>
-    $(function () {
-        /*先获取位置、再获取天气预报信息*/
-        $.ajax({
-            url: "http://restapi.amap.com/v3/ip?key=11ddf2f282ee4c39d35a46c3a4dae845",
-            type: "get",
-            success: function (responseText1) {
-                $.ajax({
-                    url: "https://free-api.heweather.com/s6/weather/forecast?key=d66df9e9bec5484da78f88a5bb58d092&location=" + responseText1.city,
-                    type: "get",
-                    success: function (responseText2) {
-
-                        $(".jumbotron h1").html(responseText1.city + "近三日天气");
-
-                        var jsonObj = responseText2.HeWeather6[0].daily_forecast;
-                        for(var i=0;i<jsonObj.length;i++) {
-                            console.log(jsonObj[i]);
-
-                            var date = jsonObj[i].date;
-                            var weather = jsonObj[i].cond_txt_d;
-                            var low = jsonObj[i].tmp_min;
-                            var hight = jsonObj[i].tmp_max;
-
-                            $(".jumbotron").append("<p>" + date + "：" + weather + "，温度：" + low + "～" + hight + "</p>");
-
-
-
-                        }
-                    },
-                    error: function () {
-                        alert("获取天气失败...")
-                    }
-                });
-
-            },
-            error: function () {
-                alert("定位失败...")
-            }
-        });
-    });
-</script>
-
-<div class="jumbotron text-center">
-    <h1></h1>
-
+<div>
+    <ul>
+        <li><a href="http://www.w3school.com.cn/tags/tag_iframe.asp" target="iframe_a">w3c school</a></li>
+        <li><a href="https://www.baidu.com/index.php?tn=monline_3_dg" target="iframe_a">百度</a></li>
+        <li><a href="https://www.cnblogs.com/" target="iframe_a">博客园</a></li>
+        <li><a href="http://www.ximalaya.com/explore/" target="iframe_a">喜马拉雅</a></li>
+        <li><a href="https://jx.tmall.com/?ali_trackid=2:mm_28347190_2425761_27186547:1503727807_3k9_233309614" target="iframe_a">天猫</a></li>
+        <li><a href="http://www.ctrip.com/?allianceid=1381&sid=1068414" target="iframe_a">携程</a></li>
+    </ul>
 </div>
-
-
+<iframe src="bbb.html" name="iframe_a" frameborder="1" width="600" height="400">
+    <div>你盛开的积分快结束了宽度盛开的积分舒服的水电费圣诞节覅</div>
+</iframe>
 </body>
 </html>

@@ -3,6 +3,9 @@
 <head>
     <meta charset="utf-8">
     <title>账户注册</title>
+
+    <link href="${request.contextPath}/imgs/favicon.ico" type="image/x-icon" rel="shortcut icon"/>
+
     <meta name="description" content="particles.js is a lightweight JavaScript library for creating particles.">
     <meta name="author" content="Vincent Garreau"/>
     <meta name="viewport"

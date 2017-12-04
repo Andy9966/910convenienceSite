@@ -10,6 +10,7 @@
     <#--bootstrap字体-->
     <link rel="stylesheet" href="${path}/bootstrap-3.3.7-dist/css/bootstrap.css"/>
 
+    <link href="${path}/imgs/favicon.ico" type="image/x-icon" rel="shortcut icon"/>
 
     <!--导航条CSS-->
     <link rel="stylesheet" href="${path}/css/navbar.css"/>

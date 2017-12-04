@@ -46,10 +46,11 @@
                 <!--退出-->
                 /logout.action = logout
 
-                <!--登陆、在线聊天，个人收藏夹时需要认证-->
+                <!--登陆、在线聊天，个人收藏夹，个人备忘录时需要认证-->
                 /user/login.do = authc
                 /goURL/onlineBarrage/onlineBarrage.do = authc
                 /goURL/favorites/toFavorites.do = authc
+                /goURL/memo/toMemo.do = authc
 
 
                 /**=anon

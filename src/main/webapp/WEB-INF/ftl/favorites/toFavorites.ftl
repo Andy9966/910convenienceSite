@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <title>个人收藏夹</title>
 
+
+    <link href="${request.contextPath}/imgs/favicon.ico" type="image/x-icon" rel="shortcut icon"/>
+
     <!--背景CSS-->
     <link rel="stylesheet" media="screen" href=" ${request.contextPath}/css/background.css">
 

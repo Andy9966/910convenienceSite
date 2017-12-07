@@ -81,7 +81,7 @@
         <p>三、个人收藏夹：使用了Elasticsearch全文搜索引擎工具。</p>
         <p>四、在线聊天：使用了GoEasy的服务推送和jquery.barrager.js构建弹幕。目前该功能并未完善，敬请期待。</p>
         <p>五、注册和登陆：使用了BootstrapValidation进行表单校验、JavaMail发送邮件的功能、Gif动态验证码</p>
-        <p>六、个人备忘录：目前该功能并未开发，敬请期待</p>
+        <p>六、个人备忘录：使用了Quartz任务调度工具来定时发送邮件</p>
         <p>总概要：</p>
         <p>&nbsp;&nbsp;&nbsp;1. Maven构建项目</p>
         <p>&nbsp;&nbsp;&nbsp;2. 使用Mysql数据库</p>
@@ -89,13 +89,14 @@
         <p>&nbsp;&nbsp;&nbsp;4. Dao层采用Mybatis，Controller层采用SpringMVC，Spring对Mybatis和SpringMVC进行整合和事务管理</p>
         <p>&nbsp;&nbsp;&nbsp;5. Shiro权限管理框架控制登陆以及对个人收藏夹、在线聊天功能进行认证的管理</p>
         <p>&nbsp;&nbsp;&nbsp;6. 使用FreeMarker来渲染页面和配置发送邮箱的模版</p>
+        <p>&nbsp;&nbsp;&nbsp;7. 使用Quartz和Spring整合，完成个人备忘录的功能。</p>
 
 
         <h1>具体的思路以及代码：</h1>
         <p>博客记录了该网站的创建过程：https://zhongfucheng.bitcron.com/tag/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%8F%91%E9%A1%B9%E7%9B%AE</p>
         <p>该网站的GitHub地址：https://github.com/ZhongFuCheng3y/910convenienceSite</p>
 
-        <img src="${request.contextPath}/imgs/pinglunBackground.jpg" width="100%" height="200px" style ="display:block;">
+        <img src="${request.contextPath}/imgs/bgpic2.jpg" width="100%" height="200px" style ="display:block;">
 
 
         <!--查看评论区-->

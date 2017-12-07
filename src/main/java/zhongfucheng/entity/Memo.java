@@ -15,6 +15,10 @@ public class Memo {
 
     private String memoContent;
 
+    //设置两个常量
+    public static final Integer ALREADY_SEND = 1;
+    public  static final Integer NO_SEND = 0;
+
     public String getMemoId() {
         return memoId;
     }

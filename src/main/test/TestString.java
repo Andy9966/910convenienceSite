@@ -1,29 +1,30 @@
+import org.junit.Test;
+import org.quartz.*;
+import org.quartz.impl.StdSchedulerFactory;
+import zhongfucheng.entity.Memo;
+import zhongfucheng.entity.User;
+import zhongfucheng.quartz.MemoJobDetail;
+import zhongfucheng.quartz.QuartzManager;
+
+import java.util.Date;
+
 /**
  * Created by ozc on 2017/11/8.
  */
 public class TestString {
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InstantiationException, IllegalAccessException, NoSuchFieldException {
 
 
-        String no = getCurNo(93, 1, "百度");
-        System.out.println(no);
+
+        User user = new User();
+        user.setUserId("111");
+
+
 
     }
-    public static String getCurNo(int curno, int length, String fillStr) {
-        int temp = curno;
-        StringBuffer sb = new StringBuffer(length);
-        int count = 0;
-        while (curno / 10 != 0) {
-            curno = curno / 10;
-            count++;
-        }
-        int size = length - count - 1;
-        for (int i = 0; i < size; i++) {
-            sb.append(fillStr);
-        }
-        sb.append(temp);
-        return sb.toString();
-    }
+
+
+
 }

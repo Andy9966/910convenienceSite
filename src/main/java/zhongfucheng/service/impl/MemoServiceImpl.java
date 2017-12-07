@@ -1,5 +1,6 @@
 package zhongfucheng.service.impl;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import zhongfucheng.entity.Comment;
 import zhongfucheng.entity.Memo;
@@ -17,12 +18,21 @@ import java.util.List;
 public class MemoServiceImpl extends BaseServiceImpl<Memo> implements MemoService {
 
 
+    @Autowired
+    private EmailService emailService;
+
     public List<Memo> queryAllMemo() {
         return memoMapper.queryAllMemo();
     }
 
     public List<Memo> queryMemoById(String userId) {
         return memoMapper.queryMemoById(userId);
+    }
+
+
+    public void doMemo(Memo memo) {
+
+
     }
 
 

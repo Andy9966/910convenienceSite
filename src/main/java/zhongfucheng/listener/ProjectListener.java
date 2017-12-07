@@ -18,8 +18,6 @@ import java.util.Map;
  */
 public class ProjectListener implements ServletContextListener {
 
-
-
     /**
      * 当项目启动的时候，我们就根据模版生成我们的index页面
      *

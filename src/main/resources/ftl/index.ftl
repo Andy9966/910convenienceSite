@@ -4,6 +4,10 @@
     <meta charset="utf-8">
     <title>首页</title>
 
+
+    <!--Jquery-->
+    <script type="text/javascript" src="${path}/js/jquery-3.2.1.min.js"></script>
+
     <!--背景CSS-->
     <link rel="stylesheet" media="screen" href="${path}/css/background.css">
 
@@ -12,11 +16,10 @@
 
     <link href="${path}/imgs/favicon.ico" type="image/x-icon" rel="shortcut icon"/>
 
-    <!--导航条CSS-->
+        <!--导航条CSS-->
     <link rel="stylesheet" href="${path}/css/navbar.css"/>
 
-    <!--Jquery-->
-    <script src="${path}/js/jquery-3.2.1.min.js"></script>
+
 
 
     <#--弹出框-->

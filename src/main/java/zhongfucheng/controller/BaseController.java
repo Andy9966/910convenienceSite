@@ -1,6 +1,11 @@
 package zhongfucheng.controller;
 
+import org.quartz.Scheduler;
+import org.quartz.SchedulerFactory;
+import org.quartz.impl.StdScheduler;
+import org.quartz.impl.StdSchedulerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -22,9 +27,9 @@ import java.util.Map;
 /**
  * 将Controller相同的内容进行抽取
  */
-
 @Controller
 public class BaseController {
+
     @Autowired
     protected UserService userService;
 
@@ -38,8 +43,20 @@ public class BaseController {
     @Autowired
     protected MemoService memoService;
 
+
+    //索引库的名字和类型
     protected String indexName = ReadPropertiesUtil.readProp("indexName");
     protected String type = ReadPropertiesUtil.readProp("type");
+
+
+    // TODO Spring管理的bean无法调用任务，我只能用最原始的方法来new一个了....
+
+    // TODO 再次测试是否无法用spring的对象
+
+    //protected SchedulerFactory gSchedulerFactory = new StdSchedulerFactory();
+
+    @Autowired
+    protected Scheduler sche;
 
 
     /**

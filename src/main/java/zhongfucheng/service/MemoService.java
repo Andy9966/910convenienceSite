@@ -23,4 +23,11 @@ public interface MemoService extends BaseService<Memo> {
      */
     List<Memo> queryMemoById(String userId);
 
+
+    /**
+     * 当时间达到了，那么就发邮件提示用户
+     */
+    void doMemo(Memo memo);
+
+
 }

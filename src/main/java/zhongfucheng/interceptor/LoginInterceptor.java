@@ -21,6 +21,7 @@ import javax.servlet.http.HttpServletResponse;
  * Created by ozc on 2017/11/14.
  */
 public class LoginInterceptor implements HandlerInterceptor {
+
     @Autowired
     private UserService userService;
 

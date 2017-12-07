@@ -55,8 +55,6 @@
     <script src="${request.contextPath}/js/getUser.js"></script>
 
 
-    <!--该页面需要用到的JS-->
-    <script src="${request.contextPath}/js/toMemo.js"></script>
 
 
 </head>
@@ -155,11 +153,11 @@
                     <div class="form-group">
                         <label for="inputEmail" class="col-sm-2 control-label">邮箱地址：</label>
                         <div class="col-sm-10">
-                            <input type="email" class="form-control" name="email" id="inputEmail" readonly value="">
+                            <input type="email" class="form-control" name="email" id="inputEmail" readonly>
                         </div>
                     </div>
 
-                    <input type="hidden" name="userId" id="userId" >
+                    <input type="hidden" name="userId" id="userId">
 
                     <div class="form-group">
                         <label for="datetimepicker" class="col-sm-2 control-label">选择发送邮件的时间：</label>
@@ -223,6 +221,8 @@
     </div>
 </div>
 
+<!--该页面需要用到的JS-->
+<script src="${request.contextPath}/js/toMemo.js"></script>
 
 <!--导航条JS-->
 <script src="${request.contextPath}/js/narbar.js"></script>

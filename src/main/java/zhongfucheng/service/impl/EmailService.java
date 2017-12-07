@@ -1,25 +1,20 @@
 package zhongfucheng.service.impl;
 
-import freemarker.template.Template;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.JavaMailSenderImpl;
-import org.springframework.mail.javamail.MimeMailMessage;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.freemarker.FreeMarkerTemplateUtils;
-import org.springframework.web.servlet.view.freemarker.FreeMarkerConfig;
-import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
+
+import zhongfucheng.entity.Memo;
 import zhongfucheng.entity.User;
+import zhongfucheng.service.UserService;
 import zhongfucheng.utils.Base64Util;
 import zhongfucheng.utils.FreeMarkerUtils;
 
 import javax.mail.internet.MimeMessage;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Properties;
 
 /**
  * Created by ozc on 2017/10/25.
@@ -30,11 +25,15 @@ import java.util.Properties;
  */
 @Service
 public class EmailService {
+
     @Autowired
     private JavaMailSender mailSender;
 
     @Autowired
     private SimpleMailMessage simpleMailMessage;
+
+    @Autowired
+    private UserService userService;
 
 
     /**
@@ -82,6 +81,37 @@ public class EmailService {
         String returnText = new FreeMarkerUtils().returnText("email.ftl", map);
 
         return returnText;
+    }
+
+
+    /**
+     * 发送备忘录邮件
+     * @param memo
+     * @throws Exception
+     */
+    public void sendMemoEmail(Memo memo) throws Exception {
+
+        User user = userService.selectByPrimaryKey(memo.getUserId());
+        Map<String, Object> map = new HashMap();
+        map.put("nickName", user.getUserNickname());
+        map.put("sendTime", memo.getSendTime());
+        map.put("memoContent", memo.getMemoContent());
+
+        String returnText = new FreeMarkerUtils().returnText("emailMemo.ftl", map);
+
+        // TODO 问题是出在发送邮件很慢 6086ms，解析freemarker才60ms 待优化
+        MimeMessage mimeMessage = mailSender.createMimeMessage();
+        MimeMessageHelper messageHelper = new MimeMessageHelper(mimeMessage, true, "UTF-8");
+        messageHelper.setFrom(simpleMailMessage.getFrom());
+        messageHelper.setSubject(simpleMailMessage.getSubject());
+
+        //接受人
+        messageHelper.setTo(user.getUserEmail());
+
+        //内容，是HTML格式
+        messageHelper.setText(returnText, true);
+        mailSender.send(mimeMessage);
+
     }
 
 }

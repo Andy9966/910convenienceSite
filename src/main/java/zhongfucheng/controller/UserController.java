@@ -24,9 +24,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
 import java.util.*;
 import java.util.List;
@@ -183,8 +181,6 @@ public class UserController extends BaseController {
          * 宽，高，位数。
          */
         Captcha captcha = new GifCaptcha(146, 42, 4);
-
-
 
         /**
          * 把验证码写到浏览器后才能知道验证码的数据，才能把数据装到session中，在后台会报出异常，我认为这样设计得不好。虽然不影响使用

@@ -30,7 +30,6 @@ public class BaseServiceImpl<T> implements BaseService<T> {
     @Autowired
     protected CommentMapper commentMapper;
 
-
     @Autowired
     protected MemoMapper memoMapper;
 

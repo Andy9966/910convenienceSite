@@ -43,7 +43,7 @@
     </script>
 
     <!--获取用户的身份信息，如果用户已登陆，那么将用户身份信息显示出来-->
-    <script src="${request.contextPath}/js/getUser.js"></script>
+   <#-- <script src="${request.contextPath}/js/getUser.js"></script>-->
 
 
     <!--页面自定义样式-->

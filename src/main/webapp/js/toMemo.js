@@ -12,11 +12,11 @@ $(function () {
 
             //获取用户的邮箱
             var email = $("#userEmail").val();
-            $("#addMemo").show().siblings().hide();
 
             //设置输入框的值
             $("#inputEmail").val(email);
 
+            $("#addMemo").show().siblings().hide();
         }
     });
 });
@@ -28,7 +28,7 @@ $(function () {
     $.ajax({
         url: path + "/memo/queryAllMemo.do",
         type: "POST",
-        data:{userId:userId},
+        data: {userId: userId},
         success: function (responseText) {
 
             if (responseText == "" || responseText == null || responseText.length == 0) {
@@ -38,7 +38,14 @@ $(function () {
                 //遍历数组，对返回的JSON作为备忘录添加到网页上
                 for (var i = 0; i < responseText.length; i++) {
                     var memoId = responseText[i].memoId;
-                    $("#allMemo").append("<tr><td>" + responseText[i].nickName + "</td><td>" + new Date(responseText[i].editTime).toLocaleString() + "</td><td>" + responseText[i].email + "</td><td>" + responseText[i].content + "</td><td>" + new Date(responseText[i].sendTime).toLocaleString() + "</td><td>" + responseText[i].state + "</td><td><button class='btn btn-primary' onclick='updCurrentMemo(this)' id=" + memoId + "  data-toggle='modal' data-target='#myModal'>修改</button>&nbsp;&nbsp;<a href='${request.contextPath}/memo/deleteMemo.do?memoId="+memoId+"'>删除</a></td>");
+                    $("#allMemo").append("<tr><td>" + responseText[i].nickName + "</td><td>" + new Date(responseText[i].editTime).toLocaleString() + "</td><td>" + responseText[i].email + "</td><td>" + responseText[i].content + "</td><td>" + new Date(responseText[i].sendTime).toLocaleString() + "</td><td>" + responseText[i].state + "</td><td><button class='btn btn-primary' onclick='updCurrentMemo(this)' id=" + memoId + "  data-toggle='modal' data-target='#myModal'>修改</button>&nbsp;&nbsp;<a href='" + path + "/memo/deleteMemo.do?memoId=" + memoId + "'>删除</a></td>");
+
+
+                    //如果是已发送状态的，那么设置不可用
+                    if(responseText[i].state=="已发送") {
+                        $("#"+memoId+"").attr("disabled", "true");
+
+                    }
 
                 }
             }
@@ -47,12 +54,18 @@ $(function () {
             sweetAlert("获取备忘录数据失败！");
         }
     });
-
-
 });
+
+
+
+
+
+
 
 //更新当前的备忘录数据
 function updCurrentMemo(currentMemo) {
+
+
     var id = $(currentMemo).attr("id");
 
     //获取内容
@@ -80,18 +93,20 @@ $("#updateMemo").click(function () {
     var memoContent = $("#memoContent").val();
     var sendTime = $("#sendTime").val();
     var memoId = $("#memoId").val();
+    var userId = $("#userId").val();
+    console.log(userId);
 
 
     console.log(sendTime);
     $.ajax({
         url: path + "/memo/updateMemo.do",
         type: "post",
-        data:{memoId:memoId,memoContent:memoContent,sendTime:sendTime},
+        data: {memoId: memoId, memoContent: memoContent, sendTime: sendTime,userId:userId},
 
         success: function (responseText) {
-            if(responseText=="success") {
+            if (responseText == "success") {
                 sweetAlert("修改成功");
-            }else {
+            } else {
                 sweetAlert("修改失败");
             }
 
@@ -109,7 +124,6 @@ $("#updateMemo").click(function () {
 
 
 //时间选择器
-
 $("#datetimepicker").datetimepicker({
     format: 'yyyy-mm-dd hh:ii:ss',
     autoclose: true,//自动关闭

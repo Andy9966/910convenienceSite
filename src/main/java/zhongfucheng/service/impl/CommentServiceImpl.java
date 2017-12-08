@@ -8,7 +8,11 @@ import java.util.List;
 
 
 /**
- * Created by ozc on 2017/10/25.
+ * 评论的业务类
+ * Created by ozc on 2017/12/8.
+ *
+ * @author ozc
+ * @version 1.0
  */
 
 @Service

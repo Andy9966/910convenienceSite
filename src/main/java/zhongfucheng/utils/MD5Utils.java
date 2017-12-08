@@ -9,6 +9,7 @@ import java.security.NoSuchAlgorithmException;
 /**
  * MD5加密工具类
  *
+ * @deprecated 被我用shiro的替代了
  */
 public class MD5Utils {
 

@@ -27,8 +27,13 @@ import java.util.Map;
 import static org.elasticsearch.common.xcontent.XContentFactory.jsonBuilder;
 
 
+
 /**
- * Created by ozc on 2017/11/6.
+ * Elasticsearch管理器类
+ * Created by ozc on 2017/12/8.
+ *
+ * @author ozc
+ * @version 1.0
  */
 public class ElasticsearchUtils {
 

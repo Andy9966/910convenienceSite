@@ -1,3 +1,4 @@
+//导航条的JS
 $("nav>div").css("left", function (i) {
         return i * 220;
     }

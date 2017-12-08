@@ -6,12 +6,17 @@ import zhongfucheng.entity.Memo;
 import java.util.List;
 
 /**
- * Created by ozc on 2017/10/25.
+ * 备忘录接口
+ * Created by ozc on 2017/12/8.
+ *
+ * @author ozc
+ * @version 1.0
  */
 public interface MemoService extends BaseService<Memo> {
     /**
-     * 查询所有的备忘录数据
+     * 查询所有的备忘录数据，测试使用的
      *
+     * @deprecated
      * @return
      */
     List<Memo> queryAllMemo();
@@ -24,10 +29,6 @@ public interface MemoService extends BaseService<Memo> {
     List<Memo> queryMemoById(String userId);
 
 
-    /**
-     * 当时间达到了，那么就发邮件提示用户
-     */
-    void doMemo(Memo memo);
 
 
 }

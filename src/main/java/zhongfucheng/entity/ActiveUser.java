@@ -3,11 +3,11 @@ package zhongfucheng.entity;
 import java.io.Serializable;
 
 /**
- * Created by ozc on 2017/10/30.
- */
-
-/**
  * 存储用户的身份信息
+ * Created by ozc on 2017/12/8.
+ *
+ * @author ozc
+ * @version 1.0
  */
 public class ActiveUser implements Serializable {
     private String userId;

@@ -2,6 +2,13 @@ package zhongfucheng.entity;
 
 import java.util.Date;
 
+/**
+ * 存储备忘录的信息
+ * Created by ozc on 2017/12/8.
+ *
+ * @author ozc
+ * @version 1.0
+ */
 public class Memo {
     private String memoId;
 
@@ -15,7 +22,7 @@ public class Memo {
 
     private String memoContent;
 
-    //设置两个常量
+    //已经发送邮件和未发送邮件常量
     public static final Integer ALREADY_SEND = 1;
     public  static final Integer NO_SEND = 0;
 

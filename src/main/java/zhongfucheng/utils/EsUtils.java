@@ -9,7 +9,11 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 
 /**
- * Created by ozc on 2017/11/7.
+ * Created by ozc on 2017/12/8.
+ *
+ * @author ozc
+ * @version 1.0
+ * @deprecated 已被EsUtilsPro替代
  */
 public class EsUtils {
 

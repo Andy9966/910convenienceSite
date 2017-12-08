@@ -10,7 +10,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by ozc on 2017/11/7.
+ * 创建Client对象连接Elasticsearch
+ * Created by ozc on 2017/12/8.
+ *
+ * @author ozc
+ * @version 1.0
  */
 public class EsUtilsPro {
 

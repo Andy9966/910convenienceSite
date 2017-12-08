@@ -4,7 +4,11 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * Created by ozc on 2017/12/6.
+ * 将日期转成cron表达式工具类
+ * Created by ozc on 2017/12/8.
+ *
+ * @author ozc
+ * @version 1.0
  */
 public class Date2Cron {
 

@@ -1,10 +1,9 @@
-/*----------------------推送以及生成弹幕---------------------start*/
-/*使用goEasy的推送功能*/
+/*使用goEasy的推送功能及生成弹幕*/
 var goEasy = new GoEasy({
     appkey: 'BC-f584732e29df466ab9c4efc6fc3d47e7'
 });
 
-/*按回车的时候会推送*/
+//按回车的时候会推送
 $("#inputText").keydown(function () {
     if (event.keyCode == 13) {
         goEasy.publish({
@@ -16,7 +15,7 @@ $("#inputText").keydown(function () {
     }
 });
 
-/*单击按钮的时候会推送*/
+//单击按钮的时候会推送
 $("#btn").click(function () {
     goEasy.publish({
         channel: 'demo_channel',
@@ -24,7 +23,7 @@ $("#btn").click(function () {
     });
 });
 
-/*接收数据、数据形式是弹幕*/
+//接收数据、数据形式是弹幕
 goEasy.subscribe({
     channel: 'demo_channel',
     onMessage: function (message) {
@@ -42,4 +41,4 @@ goEasy.subscribe({
         $('body').barrager(item);
     }
 });
-/*----------------------推送以及生成弹幕---------------------end*/
+

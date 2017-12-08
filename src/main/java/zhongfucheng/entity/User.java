@@ -8,8 +8,11 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * 用户实体类
+ * 存储用户的信息
+ * Created by ozc on 2017/12/8.
  *
+ * @author ozc
+ * @version 1.0
  */
 public class User implements Serializable {
     private String userId;
@@ -29,9 +32,7 @@ public class User implements Serializable {
 
     private Integer actiState;
 
-    /**
-     * 激活成功与激活失败常量
-     */
+    //激活成功与激活失败常量
     public static final int ACTIVATION_SUCCESSFUL = 1;
     public static final int ACTIVATION_UNSUCCESSFUL = 0;
 

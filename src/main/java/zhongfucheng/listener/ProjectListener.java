@@ -14,7 +14,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by ozc on 2017/11/1.
+ * 项目启动时初始化监听器
+ * Created by ozc on 2017/12/8.
+ *
+ * @author ozc
+ * @version 1.0
  */
 public class ProjectListener implements ServletContextListener {
 

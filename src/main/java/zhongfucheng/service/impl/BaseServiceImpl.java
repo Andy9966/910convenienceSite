@@ -12,13 +12,12 @@ import java.lang.reflect.Field;
 import java.lang.reflect.ParameterizedType;
 
 /**
- * Created by ozc on 2017/10/24.
- */
-
-/**
  * 使用initBaseMapper()将baseMapper实例化，service实现类是什么类型，baseMapper就是什么类型
  * 将所有的Mapper都定义出来，那么子类service就可以直接使用了
- * @param <T>
+ * Created by ozc on 2017/12/8.
+ *
+ * @author ozc
+ * @version 1.0
  */
 public class BaseServiceImpl<T> implements BaseService<T> {
 

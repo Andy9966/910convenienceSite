@@ -5,7 +5,11 @@ import zhongfucheng.entity.User;
 import java.util.List;
 
 /**
- * Created by ozc on 2017/10/25.
+ * 用户业务接口
+ * Created by ozc on 2017/12/8.
+ *
+ * @author ozc
+ * @version 1.0
  */
 public interface UserService extends BaseService<User> {
 

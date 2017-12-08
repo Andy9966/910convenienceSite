@@ -9,10 +9,15 @@ import zhongfucheng.utils.Date2Cron;
 import java.util.Map;
 
 /**
- * Created by ozc on 2017/12/6.
+ * Quartz任务管理器类
+ * Created by ozc on 2017/12/8.
+ *
+ * @author ozc
+ * @version 1.0
  */
 public class QuartzManager {
 
+    // job组和trigger组默认的名字
     private static String JOB_GROUP_NAME = "MY_JOB_GROUP";
     private static String TRIGGER_GROUP_NAME = "MY_TRIGGER_GROUP";
 

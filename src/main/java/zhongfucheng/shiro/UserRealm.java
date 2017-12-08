@@ -11,12 +11,13 @@ import zhongfucheng.entity.ActiveUser;
 import zhongfucheng.entity.User;
 import zhongfucheng.service.UserService;
 
-/**
- * Created by ozc on 2017/10/27.
- */
 
 /**
  * 自定义Realm，Shiro过滤器会从这里获取数据对用户进行认证
+ * Created by ozc on 2017/12/8.
+ *
+ * @author ozc
+ * @version 1.0
  */
 public class UserRealm extends AuthorizingRealm {
 
@@ -25,8 +26,6 @@ public class UserRealm extends AuthorizingRealm {
     private UserService userService;
 
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
-
-
         return null;
     }
 

@@ -5,8 +5,7 @@
 
 
 
- <!--   <bean id="jobFactory" class="zhongfucheng.quartz.MyJobFactory"></bean>-->
-    <!--<property name="jobFactory" ref="jobFactory"></property>-->
+    <!--Scheduler对象-->
     <bean name="MyScheduler" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
 
     </bean>

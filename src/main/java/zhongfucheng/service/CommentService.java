@@ -5,7 +5,11 @@ import zhongfucheng.entity.Comment;
 import java.util.List;
 
 /**
- * Created by ozc on 2017/10/25.
+ * 评论业务接口
+ * Created by ozc on 2017/12/8.
+ *
+ * @author ozc
+ * @version 1.0
  */
 public interface CommentService extends BaseService<Comment> {
     /**

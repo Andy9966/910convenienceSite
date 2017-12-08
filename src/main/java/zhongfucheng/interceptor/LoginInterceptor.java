@@ -18,7 +18,11 @@ import javax.servlet.http.HttpServletResponse;
 
 
 /**
- * Created by ozc on 2017/11/14.
+ * 登陆拦截器，用户在登陆时设置了“记住我”，那么下次用户访问时就会自动登陆
+ * Created by ozc on 2017/12/8.
+ *
+ * @author ozc
+ * @version 1.0
  */
 public class LoginInterceptor implements HandlerInterceptor {
 

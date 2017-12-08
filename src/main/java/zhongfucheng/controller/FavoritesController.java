@@ -13,37 +13,43 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by ozc on 2017/11/6.
+ * 个人收藏夹Controller
+ * <p>
+ * Created by ozc on 2017/12/8.
+ *
+ * @author ozc
+ * @version 1.0
  */
 @Controller
 @RequestMapping("/favorites")
 public class FavoritesController extends BaseController {
 
     /**
-     * 添加网站
+     * 添加网站到索引库中
      *
-     * @param userId
-     * @param webSiteAddr
-     * @param webSiteName
-     * @param writer
+     * @param userId 用户Id
+     * @param webSiteAddr 网站地址
+     * @param webSiteName 网站命名
+     * @param writer 把结果写给前台，success  Or fail
      * @throws FavoritesException
      */
     @RequestMapping("/addSite.do")
+    @ResponseBody
     public void addSite(String userId, String webSiteAddr, String webSiteName, PrintWriter writer) throws FavoritesException {
 
-
-        //当网站地址和网站名都不为null的时候才能添加
         try {
-            if (StringUtils.isNotBlank(webSiteAddr, webSiteName)) {
-                String json = WebUtils.String2JSON(userId, webSiteAddr, webSiteName);
 
-                String result = ElasticsearchUtils.insertIndexData(EsUtilsPro.getTransportClient(), EsUtils.INDEX_NAME, EsUtils.TYPE_NAME, json, webSiteName,userId);
+            //当网站地址和网站名都不为null的时候才能添加
+            if (StringUtils.isNotBlank(webSiteAddr, webSiteName)) {
+
+                String json = WebUtils.String2JSON(userId, webSiteAddr, webSiteName);
+                String result = ElasticsearchUtils.insertIndexData(EsUtilsPro.getTransportClient(), EsUtils.INDEX_NAME, EsUtils.TYPE_NAME, json, webSiteName, userId);
+
                 writer.write(result);
             } else {
                 writer.write("fail");
-                return ;
+                return;
             }
-
 
         } catch (IOException e) {
             writer.write("fail");
@@ -52,23 +58,28 @@ public class FavoritesController extends BaseController {
     }
 
 
+
     /**
-     * 根据网站命名查询
-     *
-     * @param condition
+     * 根据用户所在的命名查询记录
+     * @param condition 网站命名
+     * @param userId 用户Id
+     * @return 查询返回的集合JSON
      * @throws UnknownHostException
      */
     @RequestMapping("/querySiteByCondition.do")
     @ResponseBody
-    public List<String> querySiteByCondition(String condition,String userId) throws UnknownHostException {
+    public List<String> querySiteByCondition(String condition, String userId) throws UnknownHostException {
         List<String> list = ElasticsearchUtils.queryIndexByCondition(EsUtilsPro.getTransportClient(), EsUtilsPro.INDEX_NAME, EsUtilsPro.TYPE_NAME, condition, userId);
 
         return list;
     }
 
+
     /**
-     * 根据userId查询
-     *
+     * 根据用户Id查询索引数据、支持分页
+     * @param userId 用户Id
+     * @param currentPage 当前页数
+     * @return 返回Map类型的JSON
      * @throws UnknownHostException
      */
     @RequestMapping("/querySiteById.do")
@@ -85,10 +96,10 @@ public class FavoritesController extends BaseController {
     }
 
     /**
-     * 根据索引id删除
+     * 根据索引id删除索引
      *
-     * @param indexId
-     * @return
+     * @param indexId 索引Id
+     * @return 删除成功则重定向到页面上
      * @throws UnknownHostException
      */
     @RequestMapping("/deleteSiteById.do")
@@ -104,16 +115,17 @@ public class FavoritesController extends BaseController {
 
 
     /**
-     * 根据条件查询Elasticsearch中的数据（自动补全）
-     *
-     * @param condition
+     * 在当前用户下根据条件查询Elasticsearch中的数据（自动补全）
+     * @param condition 页面传递进来的命名
+     * @param userId 用户Id
+     * @return 符合条件的查询数据
      * @throws UnknownHostException
      */
     @RequestMapping("/querySiteCompletion.do")
     @ResponseBody
-    public List<String> querySiteCompletion(String condition,String userId) throws UnknownHostException {
+    public List<String> querySiteCompletion(String condition, String userId) throws UnknownHostException {
 
-        return ElasticsearchUtils.queryIndexByConditionCompletion(EsUtilsPro.getTransportClient(), EsUtilsPro.INDEX_NAME, condition,userId);
+        return ElasticsearchUtils.queryIndexByConditionCompletion(EsUtilsPro.getTransportClient(), EsUtilsPro.INDEX_NAME, condition, userId);
 
     }
 }

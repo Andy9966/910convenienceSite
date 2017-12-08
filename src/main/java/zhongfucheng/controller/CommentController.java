@@ -9,10 +9,13 @@ import zhongfucheng.entity.User;
 import java.util.*;
 
 /**
- * 关于网站的Controller
+ * 评论Controller
+ * <p>
+ * Created by ozc on 2017/12/8.
+ *
+ * @author ozc
+ * @version 1.0
  */
-
-
 @Controller
 @RequestMapping("/comment")
 public class CommentController extends BaseController {
@@ -21,7 +24,7 @@ public class CommentController extends BaseController {
     /**
      * 查询网站的所有评论
      *
-     * @return
+     * @return 返回JSON集合给页面解析
      */
     @RequestMapping("/queryComment.do")
     @ResponseBody
@@ -59,9 +62,11 @@ public class CommentController extends BaseController {
 
 
     /**
-     * 查询网站的所有评论
+     * 添加评论
      *
-     * @return
+     * @param comment 评论的信息
+     * @param userId  用户的Id
+     * @return 返回字符串给前台判断是否添加成功
      */
     @RequestMapping("/addComment.do")
     @ResponseBody
@@ -82,7 +87,6 @@ public class CommentController extends BaseController {
         } else {
             return "fail";
         }
-
 
 
     }

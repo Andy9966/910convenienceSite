@@ -11,11 +11,11 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.Map;
 
 /**
- * Created by ozc on 2017/10/30.
- */
-
-/**
- * 统一异常处理类
+ * 统一处理器类，所有的异常都将由该类处理
+ * Created by ozc on 2017/12/8.
+ *
+ * @author ozc
+ * @version 1.0
  */
 public class SysException  implements HandlerExceptionResolver {
 

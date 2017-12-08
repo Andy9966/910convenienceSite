@@ -5,11 +5,11 @@ import org.apache.commons.codec.binary.Base64;
 import java.io.UnsupportedEncodingException;
 
 /**
- * Created by ozc on 2017/10/25.
- */
-
-/**
  * base64的编码解码
+ * Created by ozc on 2017/12/8.
+ *
+ * @author ozc
+ * @version 1.0
  */
 public class Base64Util {
 

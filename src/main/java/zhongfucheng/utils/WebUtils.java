@@ -10,16 +10,16 @@ import java.io.PrintWriter;
 
 import static org.elasticsearch.common.xcontent.XContentFactory.jsonBuilder;
 
-/**
- * Created by ozc on 2017/11/1.
- */
 
 
 /**
- * Web常用的方法
  * 1.往浏览器输出中文数据
  * 2.校验码是否正确
  * 3.设置属性到session中
+ * Created by ozc on 2017/12/8.
+ *
+ * @author ozc
+ * @version 1.0
  */
 public class WebUtils {
 
@@ -76,6 +76,12 @@ public class WebUtils {
         session.setAttribute(key, value);
     }
 
+    /**
+     * string转成JSON，针对Elasticsearch的
+     * @param strings
+     * @return
+     * @throws IOException
+     */
     public static String String2JSON(String... strings) throws IOException {
 
         String suggestName = strings[2];

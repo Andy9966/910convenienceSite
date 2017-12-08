@@ -1,11 +1,11 @@
 package zhongfucheng.exception;
 
 /**
- * Created by ozc on 2017/10/27.
- */
-
-/**
- * 用户模块的异常
+ * 用户模块异常信息
+ * Created by ozc on 2017/12/8.
+ *
+ * @author ozc
+ * @version 1.0
  */
 public class UserException extends Exception {
 

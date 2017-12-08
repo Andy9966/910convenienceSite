@@ -2,6 +2,14 @@ package zhongfucheng.entity;
 
 import java.util.Date;
 
+
+/**
+ * 存储评论的信息
+ * Created by ozc on 2017/12/8.
+ *
+ * @author ozc
+ * @version 1.0
+ */
 public class Comment {
     private String commentId;
 

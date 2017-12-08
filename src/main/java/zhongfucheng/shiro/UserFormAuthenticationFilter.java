@@ -16,11 +16,11 @@ import javax.servlet.http.HttpSession;
 
 
 /**
- * Created by ozc on 2017/10/27.
- */
-
-/**
  * 自定义一个表单过滤器的目的就是认证流程由自己控制
+ * Created by ozc on 2017/12/8.
+ *
+ * @author ozc
+ * @version 1.0
  */
 public class UserFormAuthenticationFilter extends FormAuthenticationFilter {
 
@@ -160,7 +160,7 @@ public class UserFormAuthenticationFilter extends FormAuthenticationFilter {
     }
 
     /**
-     * 判断ajax请求
+     * 判断是否为ajax请求
      *
      * @param request
      * @return

@@ -1,3 +1,4 @@
+//设置bootstrap模态框居中
 $(function () {
     // dom加载完毕
     var $m_btn = $('#modalBtn');

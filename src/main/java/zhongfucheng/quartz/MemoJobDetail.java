@@ -20,11 +20,11 @@ import java.util.Date;
 import java.util.Map;
 
 /**
- * Created by ozc on 2017/12/6.
- */
-
-/**
  * 定时器作业类，该类继承自job类
+ * Created by ozc on 2017/12/8.
+ *
+ * @author ozc
+ * @version 1.0
  */
 
 @Controller

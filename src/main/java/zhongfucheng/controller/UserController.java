@@ -30,18 +30,25 @@ import java.util.*;
 import java.util.List;
 
 /**
- * Created by ozc on 2017/10/25.
+ * 用户相关Controller
+ * <p>
+ * Created by ozc on 2017/12/8.
+ *
+ * @author ozc
+ * @version 1.0
  */
+
 
 @Controller
 @RequestMapping("/user")
 public class UserController extends BaseController {
 
     /**
-     * 先对数据进行校验，再注册
+     * 用户注册：先对数据进行校验，再注册，发送邮件激活
      *
-     * @param user
-     * @return
+     * @param user          用户POJO
+     * @param bindingResult 校验的结果
+     * @return 重定向到页面
      * @throws Exception
      */
     @RequestMapping("/register.do")
@@ -68,10 +75,10 @@ public class UserController extends BaseController {
     }
 
     /**
-     * 检测邮箱是否存在
+     * 检测邮箱是否存在，如果存在就不给予注册
      *
-     * @param userEmail
-     * @param writer
+     * @param userEmail 邮件地址
+     * @param writer    写数据给浏览器，前台判断
      * @throws Exception
      */
     @RequestMapping("/validateEmail.do")
@@ -85,9 +92,9 @@ public class UserController extends BaseController {
     }
 
     /**
-     * 激活账户（实际上就是修改表字段的值）
+     * 激活账户（实际上就是修改表字段的值），设置邮件有效链接为24小时。过了时间则删除注册记录
      *
-     * @param userId
+     * @param userId 用户Id
      * @return
      * @throws Exception
      */
@@ -165,7 +172,7 @@ public class UserController extends BaseController {
     }
 
     /**
-     * 获取验证码（Gif版本）
+     * 生成验证码（Gif版本）
      *
      * @param response
      */
@@ -176,29 +183,35 @@ public class UserController extends BaseController {
         response.setHeader("Cache-Control", "no-cache");
         response.setDateHeader("Expires", 0);
         response.setContentType("image/gif");
-        /**
-         * gif格式动画验证码
-         * 宽，高，位数。
-         */
+
+        // gif格式动画验证码 宽，高，位数。
         Captcha captcha = new GifCaptcha(146, 42, 4);
 
         /**
          * 把验证码写到浏览器后才能知道验证码的数据，才能把数据装到session中，在后台会报出异常，我认为这样设计得不好。虽然不影响使用
-         * 作者：ozc
+         * @author ：ozc
          */
         ServletOutputStream out = response.getOutputStream();
         captcha.out(out);
         request.getSession().setAttribute("captcha", captcha.text().toLowerCase());
 
 
-
     }
 
 
+    /**
+     * 用户登陆，实际上是通过Shiro的表单验证器来进行认证的。该方法主要处理异常信息
+     *
+     * @param request
+     * @return
+     * @throws Exception
+     */
     @RequestMapping("/login.do")
-    public String login(HttpServletRequest request, HttpServletResponse response) throws Exception {
+    public String login(HttpServletRequest request) throws Exception {
 
         /**
+         * 认证流程：
+         *
          * 如果在shiro配置文件中配置了authc的话，那么所点击的url就需要认证了才可以访问
          * a：如果url是登陆请求地址(user/login.do)，不是post请求的话，流程是不会去Realm中的。那么会返回到该方法中，也就是会返回登陆页面
          * b：如果url是登陆页面地址，是post请求的话，那么去realm中对比，如果成功了那么跳转到在表单过滤器中配置的url中
@@ -305,7 +318,6 @@ public class UserController extends BaseController {
 
         return null;
     }
-
 
 
 }

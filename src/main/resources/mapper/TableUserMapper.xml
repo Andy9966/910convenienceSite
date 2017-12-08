@@ -138,10 +138,12 @@
     #{salt},now())
   </insert>
 
+  <!--校验邮箱是否存在-->
   <select id="validateEmailExist" parameterType="string" resultMap="BaseResultMap">
     select * from table_user WHERE user_email = #{userEmail}
   </select>
 
+  <!--校验用户是否被激活了-->
   <select id="validateUserExist" parameterType="string" resultMap="BaseResultMap">
     select * from table_user WHERE user_email = #{userEmail} and acti_state=1
   </select>

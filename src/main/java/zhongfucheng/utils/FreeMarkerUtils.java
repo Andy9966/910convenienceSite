@@ -12,8 +12,14 @@ import freemarker.template.Configuration;
 import freemarker.template.Template;
 import org.springframework.ui.freemarker.FreeMarkerTemplateUtils;
 
+
+
 /**
  * FreeMarker工具类，生成HTML或者HTML数据
+ * Created by ozc on 2017/12/8.
+ *
+ * @author ozc
+ * @version 1.0
  */
 public class FreeMarkerUtils {
 	

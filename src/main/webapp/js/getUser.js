@@ -1,3 +1,4 @@
+//获取用户的数据、设置到页面的hidden上
 $(function () {
     $.ajax({
         url: path + "/user/getUser.do",

@@ -6,7 +6,13 @@ import org.springframework.beans.factory.config.AutowireCapableBeanFactory;
 import org.springframework.scheduling.quartz.AdaptableJobFactory;
 
 /**
- * Created by ozc on 2017/12/7.
+ *
+ * 本想让spring对象能够注入JOB时使用该类的，后被MemoJobDetail替代
+ * Created by ozc on 2017/12/8.
+ *
+ * @author ozc
+ * @version 1.0
+ * @deprecated 已被MemoJobDetail中的SpringBeanAutowiringSupport.processInjectionBasedOnCurrentContext(this)替代
  */
 public class MyJobFactory extends AdaptableJobFactory {
 

@@ -17,11 +17,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by ozc on 2017/10/25.
- */
-
-/**
  * 邮件服务类，提供发送邮件的功能
+ * Created by ozc on 2017/12/8.
+ *
+ * @author ozc
+ * @version 1.0
  */
 @Service
 public class EmailService {

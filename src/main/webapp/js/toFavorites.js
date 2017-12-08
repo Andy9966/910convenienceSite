@@ -329,7 +329,7 @@ function queryPage(currentPage) {
                     //获取JSON对象
                     var data = eval("(" + jsonObj + ")");
 
-                    $("#manageSiteContent").before("<tr><td><input type='text' value=" + data.webSiteAddr + " ></input></td><td><input type='text' value=" + data.webSiteName + " ></input></td><td><a href='${request.contextPath}/favorites/deleteSiteById.do?indexId=" + index + "'>删除</a></td></tr>");
+                    $("#manageSiteContent").before("<tr><td><input type='text' value=" + data.webSiteAddr + " /></td><td><input type='text' value=" + data.webSiteName + " /></td><td><a href='${request.contextPath}/favorites/deleteSiteById.do?indexId=" + index + "'>删除</a></td></tr>");
 
                 } else {
                     if (index == "currentPage") {

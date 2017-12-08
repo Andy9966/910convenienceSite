@@ -13,23 +13,22 @@
 
 .content h1 {
     font-size: 34px;
-    color:#448AFF;
+    color: #448AFF;
     background: black;
 
 }
 
-
 /*评论样式*/
 
-    #comment {
-        background: black;
-    }
+#comment {
+    background: black;
+}
 
 #comment p {
     color: #c7c7c7;
 }
 
-#lookComment   {
+#lookComment {
     background: black;
 }
 
@@ -37,11 +36,21 @@
     color: #c7c7c7;
 }
 
-p{
+/*内容的样式*/
+p {
     background: black;
 }
 
-#particles-js h1{
+#particles-js h1 {
     background: black;
-    color:#448AFF;
+    color: #448AFF;
+}
+
+/*分割线样式*/
+hr {
+    width: 100%;
+    border: 2px dashed #2147e9;
+    background: #000000;
+    margin-top: 0px;
+    margin-bottom: 0px;
 }

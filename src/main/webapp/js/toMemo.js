@@ -42,8 +42,8 @@ $(function () {
 
 
                     //如果是已发送状态的，那么设置不可用
-                    if(responseText[i].state=="已发送") {
-                        $("#"+memoId+"").attr("disabled", "true");
+                    if (responseText[i].state == "已发送") {
+                        $("#" + memoId + "").attr("disabled", "true");
 
                     }
 
@@ -55,11 +55,6 @@ $(function () {
         }
     });
 });
-
-
-
-
-
 
 
 //更新当前的备忘录数据
@@ -77,7 +72,18 @@ function updCurrentMemo(currentMemo) {
     $("#memoContentManager").empty();
 
     //将其添加到模态框中
-    $("#memoContentManager").append("<tr><td><input type='text' id='memoContent' class='form-control' value='" + content + "'></td><td><input type='text' id='sendTime' value='" + sendTime + "'   class='form-control'></td><input type='hidden' value='" + id + "' id='memoId'></tr>");
+    $("#memoContentManager").append("<tr><td><input type='text' id='memoContent' class='form-control' value='" + content + "'></td><td><input type='text' id='sendTime' value='" + sendTime + "'  readonly  class='form-control form_datetime '></td><input type='hidden' value='" + id + "' id='memoId'></tr>");
+
+
+    $(".form_datetime").datetimepicker({
+        format: 'yyyy-mm-dd hh:ii:ss',
+        autoclose: true,//自动关闭
+        minView: 0,//最精准的时间选择为日期0-分 1-时 2-日 3-月
+        weekStart: 0,
+        startDate: new Date()
+
+    });
+
 
 }
 
@@ -94,14 +100,12 @@ $("#updateMemo").click(function () {
     var sendTime = $("#sendTime").val();
     var memoId = $("#memoId").val();
     var userId = $("#userId").val();
-    console.log(userId);
 
 
-    console.log(sendTime);
     $.ajax({
         url: path + "/memo/updateMemo.do",
         type: "post",
-        data: {memoId: memoId, memoContent: memoContent, sendTime: sendTime,userId:userId},
+        data: {memoId: memoId, memoContent: memoContent, sendTime: sendTime, userId: userId},
 
         success: function (responseText) {
             if (responseText == "success") {
@@ -128,5 +132,9 @@ $("#datetimepicker").datetimepicker({
     format: 'yyyy-mm-dd hh:ii:ss',
     autoclose: true,//自动关闭
     minView: 0,//最精准的时间选择为日期0-分 1-时 2-日 3-月
-    weekStart: 0
+    weekStart: 0,
+    startDate: new Date()
+
 });
+
+

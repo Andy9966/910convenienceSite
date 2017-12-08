@@ -73,6 +73,7 @@
         <h1>网站说明：</h1>
         <p>这个网站的功能并不复杂，开发的功能都是为了方便使用而已。</p>
         <p>一、个人收藏夹：将常用的网站添加进去，值得注意的地方就是：url（网址）最好是从浏览器复制下来，这是最方便也是最安全的做法</p>
+        <p>二、个人备忘录：添加个人备忘录，设置好时间、在邮件发送出去之前都能够修改时间</p>
 
 
         <h1>网站用到的技术：</h1>
@@ -96,7 +97,10 @@
         <p>博客记录了该网站的创建过程：https://zhongfucheng.bitcron.com/tag/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%8F%91%E9%A1%B9%E7%9B%AE</p>
         <p>该网站的GitHub地址：https://github.com/ZhongFuCheng3y/910convenienceSite</p>
 
-        <img src="${request.contextPath}/imgs/bgpic2.jpg" width="100%" height="200px" style ="display:block;">
+        <hr>
+        <hr>
+        <hr>
+        <hr>
 
 
         <!--查看评论区-->

@@ -5,35 +5,36 @@ import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.servlet.HandlerInterceptor;
-import org.springframework.web.servlet.ModelAndView;
 import zhongfucheng.entity.ActiveUser;
 import zhongfucheng.entity.User;
 import zhongfucheng.service.UserService;
 
+import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-
-
+import java.io.IOException;
 
 /**
- * 登陆拦截器，用户在登陆时设置了“记住我”，那么下次用户访问时就会自动登陆
- * Created by ozc on 2017/12/8.
+ * Created by ozc on 2017/12/11.
  *
  * @author ozc
  * @version 1.0
- * @deprecated 被登陆拦截器所替代了
+ *
+ * @deprecated  事实证明，在Shiro面前不能使用Filter来实现自动登陆。因此，具体的逻辑被我放到了表单验证器上了。
  */
-public class LoginInterceptor implements HandlerInterceptor {
+public class LoginFilter implements Filter {
+
 
     @Autowired
     private UserService userService;
 
-    public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o) throws Exception {
+    public void destroy() {
+    }
+
+    public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain) throws ServletException, IOException {
 
 
-
+        HttpServletRequest httpRequest = (HttpServletRequest) req;
         Subject currentUser = SecurityUtils.getSubject();
 
         //如果 isAuthenticated 为 false 证明不是登录过的，同时 isRemember 为true 证明是没登陆直接通过记住我功能进来的
@@ -58,19 +59,15 @@ public class LoginInterceptor implements HandlerInterceptor {
                 session.setTimeout(-1000l);
 
                 //这是httpSession、用户页面获取数据的。
-                httpServletRequest.getSession().setAttribute("activeUser", activeUser);
+                httpRequest.getSession().setAttribute("activeUser", activeUser);
 
             }
         }
-
-        return true;
+        chain.doFilter(req, resp);
     }
 
-    public void postHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, ModelAndView modelAndView) throws Exception {
+    public void init(FilterConfig config) throws ServletException {
 
     }
 
-    public void afterCompletion(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, Exception e) throws Exception {
-
-    }
 }

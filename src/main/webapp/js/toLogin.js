@@ -48,12 +48,14 @@ $(function () {
                         sweetAlert("验证码错误");
                     } else if (responseText.message == "密码错误") {
                         sweetAlert("密码错误");
-                    } else if (responseText.message == "账号不存在") {
-                        sweetAlert("账号不存在");
+                    } else if (responseText.message == "账号不存在/没有在邮箱中激活账户") {
+                        sweetAlert("账号不存在/账户未激活");
                     } else if (responseText.message == "登陆成功") {
                         window.location.href = path + "/index.html";
                     } else {
-                        sweetAlert("未知错误");
+
+                        //出错了也回到首页吧
+                        window.location.href = path + "/index.html";
                     }
 
                     //只要错误了，就设置验证码为空，同时更新验证码

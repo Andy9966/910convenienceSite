@@ -79,14 +79,13 @@
         <property name="order" value="2"/>
     </bean>
 
-    <!--拦截器 -->
-    <mvc:interceptors>
-
+    <!--拦截器，被过滤器替代了。Shiro的拦截比SpringMVC先要执行，不符合我的业务需求 -->
+<!--    <mvc:interceptors>
         <mvc:interceptor>
-            <!-- /**可以拦截路径不管多少层 -->
+            &lt;!&ndash; /**可以拦截路径不管多少层 &ndash;&gt;
             <mvc:mapping path="/**" />
             <bean class="zhongfucheng.interceptor.LoginInterceptor"></bean>
         </mvc:interceptor>
-    </mvc:interceptors>
+    </mvc:interceptors>-->
 
 </beans>

@@ -8,7 +8,7 @@ $("#inputText").keydown(function () {
     if (event.keyCode == 13) {
         goEasy.publish({
             channel: 'demo_channel',
-            message: $("#inputText").val()
+            message: $("#userNickname").val() + "：" + $("#inputText").val()
         });
         //推送完清空输入框
         $("#inputText").val("");
@@ -19,7 +19,7 @@ $("#inputText").keydown(function () {
 $("#btn").click(function () {
     goEasy.publish({
         channel: 'demo_channel',
-        message: $("#inputText").val()
+        message: $("#userNickname").val() + "：" + $("#inputText").val()
     });
 });
 
@@ -30,7 +30,7 @@ goEasy.subscribe({
         var txt = message.content;
         var item = {
             img: path + '/imgs/favicon.ico', //图片
-            info: $("#userNickname").val() + "：" + txt, //文字
+            info: txt, //文字
             /*href: 'www.baidu.com',*/ //链接
             close: true, //显示关闭按钮
             speed: 15, //延迟,单位秒,默认8

@@ -1,10 +1,16 @@
 package zhongfucheng.shiro;
 
+import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationToken;
+import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
 import org.apache.shiro.web.filter.authc.FormAuthenticationFilter;
+import org.springframework.beans.factory.annotation.Autowired;
 import zhongfucheng.entity.ActiveUser;
+import zhongfucheng.entity.User;
+import zhongfucheng.service.UserService;
 import zhongfucheng.utils.ReadPropertiesUtil;
 import zhongfucheng.utils.WebUtils;
 
@@ -25,6 +31,10 @@ import javax.servlet.http.HttpSession;
 public class UserFormAuthenticationFilter extends FormAuthenticationFilter {
 
 
+    @Autowired
+    private UserService userService;
+
+
     /**
      * 只要请求地址不是post请求和不是user/login（处理登陆的url），那么就返回登陆页面上
      *
@@ -38,6 +48,13 @@ public class UserFormAuthenticationFilter extends FormAuthenticationFilter {
 
         HttpServletRequest httpRequest = (HttpServletRequest) request;
         HttpServletResponse httpServletResponse = (HttpServletResponse) response;
+
+
+        //如果用户没有认证、但是有“记住我”这个属性，那么就实现自动登陆。
+        if (autoLogin(httpRequest)) {
+            return true;
+        }
+
 
         //判断是否是登陆页面地址请求地址、如果不是那么重定向到controller的方法中
         if (isLoginRequest(request, response)) {
@@ -87,12 +104,12 @@ public class UserFormAuthenticationFilter extends FormAuthenticationFilter {
      *
      * @param token
      * @param subject
+    @Override
      * @param request
      * @param response
      * @return
-     * @throws Exception
+             * @throws Exception
      */
-    @Override
     protected boolean onLoginSuccess(AuthenticationToken token, Subject subject, ServletRequest request, ServletResponse response) throws Exception {
 
         //在跳转前将数据保存到session中
@@ -150,7 +167,7 @@ public class UserFormAuthenticationFilter extends FormAuthenticationFilter {
         if ("IncorrectCredentialsException".equals(message)) {
             WebUtils.printCNJSON("{\"message\":\"密码错误\"}", httpServletResponse);
         } else if ("UnknownAccountException".equals(message)) {
-            WebUtils.printCNJSON("{\"message\":\"账号不存在\"}", httpServletResponse);
+            WebUtils.printCNJSON("{\"message\":\"账号不存在/没有在邮箱中激活账户\"}", httpServletResponse);
         } else if ("captchaCodeError".equals(message)) {
             WebUtils.printCNJSON("{\"message\":\"验证码错误\"}", httpServletResponse);
         } else {
@@ -167,5 +184,45 @@ public class UserFormAuthenticationFilter extends FormAuthenticationFilter {
      */
     boolean isAjax(HttpServletRequest request) {
         return (request.getHeader("X-Requested-With") != null && "XMLHttpRequest".equals(request.getHeader("X-Requested-With").toString()));
+    }
+
+
+    /**
+     * 用户要是在登陆的时候点击了“记住我”，那么就实现自动登陆。
+     * @param request
+     * @return
+     */
+    private boolean autoLogin(HttpServletRequest request) {
+        Subject currentUser = SecurityUtils.getSubject();
+
+        //如果 isAuthenticated 为 false 证明不是登录过的，同时 isRemember 为true 证明是没登陆直接通过记住我功能进来的
+        if (!currentUser.isAuthenticated() && currentUser.isRemembered()) {
+
+            ActiveUser activeUser = (ActiveUser) SecurityUtils.getSubject().getPrincipal();
+
+            //获取session看看是不是空的
+            Session session = currentUser.getSession();
+            if (session.getAttribute("currentUser") == null) {
+
+                User user = userService.validateUserExist(activeUser.getUserEmail());
+
+                UsernamePasswordToken token = new UsernamePasswordToken(user.getUserEmail(), activeUser.getPassword(), currentUser.isRemembered());
+
+                //把当前用户放入session
+                currentUser.login(token);
+
+                session.setAttribute("currentUser", user);
+                //设置会话的过期时间--ms,默认是30分钟，设置负数表示永不过期
+                session.setTimeout(-1000l);
+
+                //这是httpSession、用户页面获取数据的。
+                request.getSession().setAttribute("activeUser", activeUser);
+
+                return true;
+
+            }
+        }
+
+        return false;
     }
 }

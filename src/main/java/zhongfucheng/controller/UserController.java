@@ -226,7 +226,6 @@ public class UserController extends BaseController {
         //根据shiro返回的异常类路径判断，抛出指定异常信息
         if (exceptionClassName != null) {
             if (UnknownAccountException.class.getName().equals(exceptionClassName)) {
-
                 throw new UserException("账号不存在");
             } else if (IncorrectCredentialsException.class.getName().equals(
                     exceptionClassName)) {

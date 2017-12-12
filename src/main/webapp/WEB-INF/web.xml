@@ -12,7 +12,6 @@
         <param-value>classpath:application-*.xml</param-value>
     </context-param>
 
-
     <!--自定义监听器-->
     <listener>
         <listener-class>zhongfucheng.listener.ProjectListener</listener-class>
@@ -31,6 +30,17 @@
         <servlet-name>springmvc</servlet-name>
         <url-pattern>*.do</url-pattern>
     </servlet-mapping>
+
+
+    <!--登陆拦截器【不能这样配置、Shiro过滤器的优先级是最高的。这样配置会报错。】-->
+<!--    <filter>
+        <filter-name>LoginFilter</filter-name>
+        <filter-class>zhongfucheng.interceptor.LoginFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>LoginFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>-->
 
     <!-- shiro过虑器，DelegatingFilterProxy通过代理模式将spring容器中的bean和filter关联起来 -->
     <filter>
@@ -63,6 +73,7 @@
             <param-value>UTF-8</param-value>
         </init-param>
     </filter>
+
     <filter-mapping>
         <filter-name>SpringCharacterEncodingFilter</filter-name>
         <url-pattern>*.do</url-pattern>

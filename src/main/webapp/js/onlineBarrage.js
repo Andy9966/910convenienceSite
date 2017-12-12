@@ -33,7 +33,7 @@ goEasy.subscribe({
             info: $("#userNickname").val() + "：" + txt, //文字
             /*href: 'www.baidu.com',*/ //链接
             close: true, //显示关闭按钮
-            speed: 8, //延迟,单位秒,默认8
+            speed: 15, //延迟,单位秒,默认8
             bottom: 500, //距离底部高度,单位px,默认随机
             color: '#fff', //字体颜色颜色,默认白色
             old_ie_color: '#fff' //ie低版兼容色,不能与网页背景相同,默认黑色

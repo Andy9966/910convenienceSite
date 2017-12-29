@@ -14,6 +14,8 @@ import java.util.List;
 public interface UserMapper extends BaseMapper<User> {
 
 
+
+
     /**
      * 验证邮箱是否存在，如果邮箱存在了那么不给予注册
      * @param userEmail

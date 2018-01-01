@@ -3,10 +3,7 @@ package zhongfucheng.listener;
 import org.elasticsearch.client.transport.TransportClient;
 import zhongfucheng.exception.InitException;
 import zhongfucheng.exception.SysException;
-import zhongfucheng.utils.ElasticsearchUtils;
-import zhongfucheng.utils.EsUtils;
-import zhongfucheng.utils.FreeMarkerUtils;
-import zhongfucheng.utils.ReadPropertiesUtil;
+import zhongfucheng.utils.*;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
@@ -39,9 +36,12 @@ public class ProjectListener implements ServletContextListener {
             markerUtils.ouputFile("index.ftl", "index.html", map);
 
             //如果在Elasticsearch没有索引、则创建
-            TransportClient client = EsUtils.getEsClient();
-            if (!ElasticsearchUtils.isIndexExists(client, EsUtils.INDEX_NAME)) {
-                ElasticsearchUtils.createIndex(client, EsUtils.INDEX_NAME,EsUtils.TYPE_NAME);
+
+
+            // 2018年1月1日20:48:30这里改成了EsUtilsPro
+            TransportClient client = EsUtilsPro.getTransportClient();
+            if (!ElasticsearchUtils.isIndexExists(client, EsUtilsPro.INDEX_NAME)) {
+                ElasticsearchUtils.createIndex(client, EsUtilsPro.INDEX_NAME,EsUtilsPro.TYPE_NAME);
             }
 
         } catch (Exception e) {

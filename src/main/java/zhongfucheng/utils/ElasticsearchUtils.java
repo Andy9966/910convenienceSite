@@ -38,7 +38,7 @@ import static org.elasticsearch.common.xcontent.XContentFactory.jsonBuilder;
 public class ElasticsearchUtils {
 
     /**
-     * 根据索引名判断该索引是否存在
+     * 根据索引名判断该索引库是否存在
      *
      * @param client
      * @param indexName
@@ -125,7 +125,7 @@ public class ElasticsearchUtils {
 
 
     /**
-     * 插入数据进索引库中，在插入之前先判断该“命名”索引是否存在fds
+     * 插入数据进索引库中，在插入之前先判断该“命名”索引是否存在
      *
      * @param client
      * @param indexName
@@ -286,22 +286,28 @@ public class ElasticsearchUtils {
         //获取以Id查询出来的数据，用户的数据与自动补齐的数据来进行对比。如果相同，则给浏览器显示补齐
         if (suggestResponse.getHits().totalHits() > 0) {
 
+
+            // TODO 2018年1月4日14:45:11，下面注释掉的是因为在自动补齐的时候没有把相对应的记录全部展示出来。当时候想多了。
+
             //获取用户的索引数据
-            for (SearchHit hitFields : suggestResponse.getHits()) {
-                Map<String, Object> source = hitFields.getSource();
-                String webSiteName = (String) source.get("webSiteName");
+            //for (SearchHit hitFields : suggestResponse.getHits()) {
+                //Map<String, Object> source = hitFields.getSource();
+                //String webSiteName = (String) source.get("webSiteName");
 
                 //获取以条件搜索出来的suggestion所有数据
                 for (Suggest.Suggestion.Entry<? extends Suggest.Suggestion.Entry.Option> op : results) {
                     List<? extends Suggest.Suggestion.Entry.Option> options = op.getOptions();
                     for (Suggest.Suggestion.Entry.Option pp : options) {
-                        if (webSiteName.equals(pp.getText().toString())) {
-                            lists.add(webSiteName);
-                        }
+
+
+                        //if (webSiteName.equals(pp.getText().toString())) {
+                            //lists.add(webSiteName);
+                        lists.add(pp.getText().toString());
+                        //}
                     }
                 }
             }
-        }
+        //}
         return lists;
     }
 

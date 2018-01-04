@@ -7,7 +7,7 @@
       </sourceFilesUrls>
     </properties>
     <CLASSES>
-      <root url="file://$PROJECT_DIR$/src/main/webapp/js/jquery-3.2.1.js" />
+      <root url="file://$PROJECT_DIR$/../fuchengWeb/src/main/webapp/js/jquery-3.2.1.js" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

@@ -2,8 +2,10 @@ package zhongfucheng.listener;
 
 import org.elasticsearch.client.transport.TransportClient;
 import zhongfucheng.exception.InitException;
-import zhongfucheng.exception.SysException;
-import zhongfucheng.utils.*;
+import zhongfucheng.utils.ElasticsearchUtils;
+import zhongfucheng.utils.EsUtilsPro;
+import zhongfucheng.utils.FreeMarkerUtils;
+import zhongfucheng.utils.ReadPropertiesUtil;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;

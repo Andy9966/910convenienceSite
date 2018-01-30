@@ -15,9 +15,9 @@
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
         <property name="driverClass" value="com.mysql.jdbc.Driver"/>
         <property name="jdbcUrl"
-                  value="jdbc:mysql://localhost:3306/zhongfucheng?useUnicode=true&amp;characterEncoding=UTF-8"/>
-        <property name="user" value="zhongfucheng"/>
-        <property name="password" value="zhong"/>
+                  value="jdbc:mysql://localhost:3306/xxx?useUnicode=true&amp;characterEncoding=UTF-8"/>
+        <property name="user" value="xxxx"/>
+        <property name="password" value="xxx"/>
 
 
         <!--解决Mysql连接与C3P0连接不匹配的问题-->

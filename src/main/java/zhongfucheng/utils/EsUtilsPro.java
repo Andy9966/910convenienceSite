@@ -28,7 +28,7 @@ public class EsUtilsPro {
 
     static Map<String, String> m = new HashMap<String, String>();
     // 设置client.transport.sniff为true来使客户端去嗅探整个集群的状态，把集群中其它机器的ip地址加到客户端中，
-    static Settings settings = Settings.builder().put(m).put("cluster.name", "zhongfucheng_123").put("client.transport.sniff", true).put("shield.user", "zhongfucheng:zhongfucheng").build();
+    static Settings settings = Settings.builder().put(m).put("cluster.name", "xxxxx").put("client.transport.sniff", true).put("shield.user", "xxxx:xxxx").build();
 
 
     // 创建私有对象

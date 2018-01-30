@@ -35,20 +35,21 @@ public class BaseServiceImpl<T> implements BaseService<T> {
 
     /**
      * 初始化baseMapper，哪种类型的service实现调用该方法，baseMapper就是那种类型
+     *
      * @throws Exception
      */
     @PostConstruct
-    private void initBaseMapper() throws Exception{
+    private void initBaseMapper() throws Exception {
 
         //获取泛型的信息
-        ParameterizedType type =(ParameterizedType) this.getClass().getGenericSuperclass();
-        Class clazz = (Class)type.getActualTypeArguments()[0];
+        ParameterizedType type = (ParameterizedType) this.getClass().getGenericSuperclass();
+        Class clazz = (Class) type.getActualTypeArguments()[0];
 
         //拼接成“泛型”Mapper字符串
-        String localField = clazz.getSimpleName().substring(0,1).toLowerCase()+clazz.getSimpleName().substring(1)+"Mapper";
+        String localField = clazz.getSimpleName().substring(0, 1).toLowerCase() + clazz.getSimpleName().substring(1) + "Mapper";
 
         //通过反射来获取成员变量的值
-        Field field=this.getClass().getSuperclass().getDeclaredField(localField);
+        Field field = this.getClass().getSuperclass().getDeclaredField(localField);
         Field baseField = this.getClass().getSuperclass().getDeclaredField("baseMapper");
 
         //将baseDao来进行实例化

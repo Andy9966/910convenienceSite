@@ -219,7 +219,6 @@ public class UserFormAuthenticationFilter extends FormAuthenticationFilter {
                 request.getSession().setAttribute("activeUser", activeUser);
 
                 return true;
-
             }
         }
 

@@ -6,9 +6,7 @@
         <item url="file://$PROJECT_DIR$/src/main/webapp/js/jquery-3.2.1.js" />
       </sourceFilesUrls>
     </properties>
-    <CLASSES>
-      <root url="file://$PROJECT_DIR$/../fuchengWeb/src/main/webapp/js/jquery-3.2.1.js" />
-    </CLASSES>
+    <CLASSES />
     <JAVADOC />
     <SOURCES />
   </library>

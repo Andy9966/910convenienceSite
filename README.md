@@ -21,6 +21,8 @@
 2. 连接Elasticsearch的代码在EsUtilsPro.java中。(我使用了shield管理Elasticsearch的，如果没有可删除用户名和密码，同时，节点名需要换成是自己的节点名才能使用)
 
 
+看到有xxxx的，就是需要替换的了。
+
 
 
 

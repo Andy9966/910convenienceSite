@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="zhongfucheng.dao.MemoMapper" >
+  <resultMap id="BaseResultMap" type="zhongfucheng.entity.Memo" >
+    <id column="memo_id" property="memoId" jdbcType="VARCHAR" />
+    <result column="edit_time" property="editTime" jdbcType="TIMESTAMP" />
+    <result column="send_time" property="sendTime" jdbcType="TIMESTAMP" />
+    <result column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="state" property="state" jdbcType="INTEGER" />
+    <result column="memo_content" property="memoContent" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    memo_id, edit_time, send_time, user_id, state, memo_content
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from table_memo
+    where memo_id = #{memoId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from table_memo
+    where memo_id = #{memoId,jdbcType=VARCHAR}
+  </delete>
+
+
+  <insert id="insert" parameterType="zhongfucheng.entity.Memo" >
+    <selectKey keyProperty="memoId" order="BEFORE" resultType="string">
+      select uuid()
+    </selectKey>
+
+
+    insert into table_memo (memo_id, edit_time, send_time, 
+      user_id, state, memo_content
+      )
+    values (#{memoId}, now(), #{sendTime,jdbcType=TIMESTAMP},
+      #{userId,jdbcType=VARCHAR}, 0, #{memoContent,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="zhongfucheng.entity.Memo" >
+    insert into table_memo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="memoId != null" >
+        memo_id,
+      </if>
+      <if test="editTime != null" >
+        edit_time,
+      </if>
+      <if test="sendTime != null" >
+        send_time,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="state != null" >
+        state,
+      </if>
+      <if test="memoContent != null" >
+        memo_content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="memoId != null" >
+        #{memoId,jdbcType=VARCHAR},
+      </if>
+      <if test="editTime != null" >
+        #{editTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sendTime != null" >
+        #{sendTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="memoContent != null" >
+        #{memoContent,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="zhongfucheng.entity.Memo" >
+    update table_memo
+    <set >
+      <if test="editTime != null" >
+        edit_time = #{editTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sendTime != null" >
+        send_time = #{sendTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="memoContent != null" >
+        memo_content = #{memoContent,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where memo_id = #{memoId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="zhongfucheng.entity.Memo" >
+    update table_memo
+    set edit_time = #{editTime,jdbcType=TIMESTAMP},
+      send_time = #{sendTime,jdbcType=TIMESTAMP},
+      user_id = #{userId,jdbcType=VARCHAR},
+      state = #{state,jdbcType=INTEGER},
+      memo_content = #{memoContent,jdbcType=VARCHAR}
+    where memo_id = #{memoId,jdbcType=VARCHAR}
+  </update>
+
+
+  <!--查看所有的备忘录数据-->
+  <select id="queryAllMemo" resultMap="BaseResultMap">
+    SELECT * from table_memo order by state ,edit_time DESC ;
+
+  </select>
+
+  <!--通过用户Id获取备忘录的数据-->
+  <select id="queryMemoById" resultMap="BaseResultMap" parameterType="string">
+    SELECT * from table_memo  where user_id =#{userId} order by state ,edit_time DESC ;
+
+  </select>
+</mapper>

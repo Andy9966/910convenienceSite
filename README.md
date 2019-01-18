@@ -3,8 +3,6 @@
 
 编写网站时的记录教程：[https://zhongfucheng.bitcron.com/tag/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%8F%91%E9%A1%B9%E7%9B%AE](https://zhongfucheng.bitcron.com/tag/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%8F%91%E9%A1%B9%E7%9B%AE)(推荐
 
-线上地址：[http://www.zhongfucheng.top/](http://www.zhongfucheng.top/)
-
 
 
 ## 如何使用 ##
